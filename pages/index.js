@@ -21,7 +21,6 @@ export default function Home() {
       <Header
       className="welcome-header"
       as="h1"
-      size="huge"
       textAlign="center"
       content="Welcome to Basswood Farm"
       />
@@ -32,10 +31,9 @@ export default function Home() {
         width: '85%',
       }}
       >
-        <Container>
-          <Header textAlign="center" size="huge" as="h1">Discover
+          <Header textAlign="center" style={{fontSize: "3em"}} as="h1">Discover
         </Header>
-        </Container>
+        
       <Grid columns={2}>
         <Grid.Column>
           <Link href='/' passHref>
@@ -53,7 +51,8 @@ export default function Home() {
             as="h1"
             textAlign="center"
             style={{
-              color: '#ede7de'
+              color: '#ede7de',
+              fontSize: '2.5em'
             }}
             />
           </Container>
@@ -75,7 +74,8 @@ export default function Home() {
             as="h1"
             textAlign="center"
             style={{
-              color: '#ede7de'
+              color: '#ede7de',
+              fontSize: '2.5em'
             }}
             />
           </Container>
@@ -83,6 +83,20 @@ export default function Home() {
         </Grid.Column>
       </Grid>
       </Container>
+      <Segment
+      style={{ width: "85%", background: 'transparent', padding: '6em 0em', marginRight: 'auto', marginLeft: 'auto'}}
+      vertical
+      >
+      <Grid columns={2}>
+        <Grid.Column verticalAlign="center" width={6}>
+          <Header as="h3" style={{fontSize: '2em'}}>Value Added Products</Header>  
+        </Grid.Column>
+        <Grid.Column verticalAlign="middle" width={10}>
+        <p style={{fontSize: '1.5em'}}>About value added products here.  We make great things, check them out on our page.  (Anything Can Go Here)</p>
+        <Button color='red' content="Learm More"/>
+        </Grid.Column>
+      </Grid>
+      </Segment>
     </>
   )
 }

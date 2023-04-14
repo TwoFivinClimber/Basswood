@@ -21,11 +21,11 @@ a {
 /*Index*/
 .welcome-header{
   padding-top: 5rem!important;
-  font-size: 4rem!important;
+  font-size: 5em!important;
 }
 
 .discover-cards{
   display: flex!important;
   justify-content: center!important;
-  align-items: center!important;
+  align-items: center;
 }
