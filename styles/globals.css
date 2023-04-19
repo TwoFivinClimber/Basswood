@@ -18,6 +18,13 @@ a {
   box-sizing: border-box;
 }
 
+/* NAV */
+
+.nav-menu a{
+  display: flex;
+  align-items: center;
+}
+
 /*Index*/
 .welcome-header{
   padding-top: 5rem!important;
@@ -26,6 +33,6 @@ a {
 
 .discover-cards{
   display: flex!important;
-  justify-content: center!important;
+  justify-content: center;
   align-items: center;
 }
