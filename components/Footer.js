@@ -4,10 +4,11 @@ import { Menu } from 'semantic-ui-react';
 function Footer() {
   return (
     <Menu
+      attached="bottom"
       fluid
-      fixed="bottom"
+      size="tiny"
       borderless
-      style={{ justifyContent: 'center', bottom: '0' }}
+      style={{ justifyContent: 'center' }}
     >
       <Menu.Item centered>
         &copy; Baswood Farm 2023

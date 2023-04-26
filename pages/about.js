@@ -5,7 +5,7 @@ import {
 
 function About() {
   return (
-    <>
+    <Container className="about" style={{ paddingBottom: '6em' }}>
       <Grid style={{ padding: '6em' }} textAlign="center" verticalAlig="middle" columns="2">
         <Grid.Column style={{ display: 'flex', justifyContent: 'center' }}>
           <Image size="medium" rounded src="/images/goat.jpg" />
@@ -31,7 +31,7 @@ function About() {
           Basswood Farm
         </p>
       </Container>
-    </>
+    </Container>
   );
 }
 

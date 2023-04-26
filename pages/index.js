@@ -31,7 +31,7 @@ export default function Home() {
 
         <Grid columns={2}>
           <Grid.Column>
-            <Link href="/" passHref>
+            <Link href="/basswood" passHref>
               <Container
                 className="discover-cards"
                 style={{
@@ -54,7 +54,7 @@ export default function Home() {
             </Link>
           </Grid.Column>
           <Grid.Column>
-            <Link href="/" passHref>
+            <Link href="/woodhouse" passHref>
               <Container
                 className="discover-cards"
                 style={{

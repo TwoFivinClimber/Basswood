@@ -2,11 +2,12 @@ html,
 body {
   padding: 0;
   margin: 0;
+  background: linear-gradient(#ede7de, #f2dbc5);
+  background-attachment: fixed;
 }
 
-body {
- background: linear-gradient(#ede7de, #f2dbc5);
- background-attachment: fixed;
+#__next{
+  min-height: 100vh;
 }
 
 a {
