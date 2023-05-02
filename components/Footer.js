@@ -11,7 +11,7 @@ function Footer() {
       style={{ justifyContent: 'center' }}
     >
       <Menu.Item centered>
-        &copy; Baswood Farm 2023
+        &copy; Baswood Farm All Rights Reserved.
       </Menu.Item>
     </Menu>
   );
