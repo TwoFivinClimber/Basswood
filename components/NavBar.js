@@ -24,7 +24,7 @@ function Navbar() {
           <Menu.Item>About Us</Menu.Item>
         </Link>
         <Link href="/contact" passHref>
-          <Menu.Item>Contact Us</Menu.Item>
+          <Menu.Item>Contact</Menu.Item>
         </Link>
         <Dropdown item labeled icon="angle double down">
           <Dropdown.Menu>
