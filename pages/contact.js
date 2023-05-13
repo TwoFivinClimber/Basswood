@@ -41,7 +41,7 @@ function Contact() {
       </Container>
       <Container style={{ width: '90%' }}>
         <Form onSubmit={handleSubmit}>
-          <Header as="h3" content="Email: mdcook@gmail.com" />
+          <Header as="h3" content="Email: mdcook1968@gmail.com" />
           <Header as="h2" content="or" />
           <Header as="h3" content="Send us a Message" />
           <Form.Group widths="equal">
