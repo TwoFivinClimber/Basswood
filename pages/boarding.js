@@ -52,7 +52,7 @@ function Boarding() {
         </Card>
       </Card.Group>
       <br />
-      <Header textAlign="center" as="h1">What's Included</Header>
+      <Header textAlign="center" as="h1">What&apos;s Included</Header>
       <p style={{ fontSize: '18px' }}>
         We take pride in offering the best.....It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
       </p>

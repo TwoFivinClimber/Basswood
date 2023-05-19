@@ -1,79 +1,63 @@
 import Link from 'next/link';
 import {
-  Segment, Header, Container, Grid, Button,
+  Segment, Header, Container, Grid, Button, Image,
 } from 'semantic-ui-react';
 
 export default function Home() {
   return (
     <>
-      <Container
-        fluid
-        style={{
-          marginTop: '3rem',
-          backgroundImage: "url('/images/stable.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          height: '800px',
-          width: '85%',
-        }}
-      >
-        <Header className="welcome-header" as="h1" textAlign="center" content="Welcome to Basswood Farm" />
-      </Container>
+      <Header className="welcome-header" as="h1" textAlign="center" content="Welcome to Basswood Farm" />
       <Container
         style={{
           marginTop: '3rem',
           width: '85%',
         }}
       >
-        <Header textAlign="center" style={{ fontSize: '3em' }} as="h1">
-          Discover
-        </Header>
-
         <Grid columns={2}>
-          <Grid.Column>
+          <Grid.Column style={{
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          >
+            <Header
+              content="Basswood Farm"
+              as="h1"
+              style={{
+                zIndex: '1',
+                position: 'absolute',
+                color: '#ede7de',
+                fontSize: '4em',
+              }}
+            />
             <Link href="/basswood" passHref>
-              <Container
-                className="discover-cards"
-                style={{
-                  backgroundImage: "url('/images/basswood.jpg')",
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  height: '400px',
-                }}
-              >
-                <Header
-                  content="Basswood Farm"
-                  as="h1"
-                  textAlign="center"
-                  style={{
-                    color: '#ede7de',
-                    fontSize: '2.5em',
-                  }}
-                />
-              </Container>
+              <Image
+                src="/images/stable.jpg"
+              />
             </Link>
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column style={{
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          >
+            <Header
+              content="Woodhouse Homestead"
+              as="h1"
+              style={{
+                zIndex: '1',
+                position: 'absolute',
+                color: '#ede7de',
+                fontSize: '4em',
+              }}
+            />
             <Link href="/woodhouse" passHref>
-              <Container
-                className="discover-cards"
-                style={{
-                  backgroundImage: "url('/images/woodhouse.jpg')",
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  height: '400px',
-                }}
-              >
-                <Header
-                  content="Woodhouse Homestead"
-                  as="h1"
-                  textAlign="center"
-                  style={{
-                    color: '#ede7de',
-                    fontSize: '2.5em',
-                  }}
-                />
-              </Container>
+              <Image
+                src="/images/woodhouse.jpg"
+              />
             </Link>
           </Grid.Column>
         </Grid>
