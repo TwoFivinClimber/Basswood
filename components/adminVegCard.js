@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card, Image,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import AdminVegModal from './AdminVegModal';
 
-function AdminVeg({ obj }) {
+function AdminVegCard({ obj }) {
+  const [open, setOpen] = useState(false);
   return (
-    <Card style={{
-      display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '30em',
-    }}
-    >
-      <Image size="tiny" src={obj.img} style={{ paddingLeft: '1em' }} />
-      <Card.Content>
-        <Card.Header content={obj.name} />
-        <Card.Description content={`${obj.description.slice(0, 75)}...`} />
-      </Card.Content>
-    </Card>
+    <>
+      <Card
+        onClick={setOpen}
+        style={{
+          display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '30em',
+        }}
+      >
+        <Image size="tiny" src={obj.img} style={{ paddingLeft: '1em' }} />
+        <Card.Content>
+          <Card.Header content={obj.name} />
+          <Card.Description content={`${obj.description?.slice(0, 75)}...`} />
+        </Card.Content>
+      </Card>
+      <AdminVegModal open={open} setOpen={setOpen} obj={obj} />
+    </>
   );
 }
 
-AdminVeg.propTypes = {
+AdminVegCard.propTypes = {
   obj: PropTypes.shape({
     img: PropTypes.string,
     name: PropTypes.string,
@@ -27,4 +34,4 @@ AdminVeg.propTypes = {
   }).isRequired,
 };
 
-export default AdminVeg;
+export default AdminVegCard;

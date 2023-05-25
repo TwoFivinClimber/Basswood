@@ -24,6 +24,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-media": "^1.10.0",
+    "react-select": "^5.7.3",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4"
   },

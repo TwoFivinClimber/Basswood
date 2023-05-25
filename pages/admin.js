@@ -1,35 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Button, Card, Container, Header, Segment,
-} from 'semantic-ui-react';
-import { getVeggies } from '../utils/data/api';
-import AdminVeg from '../components/adminVegCard';
+import React from 'react';
+import { Button, Card, Container } from 'semantic-ui-react';
+import Router from 'next/router';
 
 function Admin() {
-  const [liveBasket, setLiveBasket] = useState([]);
-
-  const getTheContent = () => {
-    getVeggies().then(setLiveBasket);
-  };
-
-  useEffect(() => {
-    getTheContent();
-  }, []);
   return (
-    <Container>
-      <Header as="h1" content="Basket Admin" />
-      <Segment>
-        <Header as="h3">
-          Live Basket
-          <Button floated="right" color="orange" content="Edit" />
-        </Header>
-        <p>Week 20</p>
-        <Card.Group centered>
-          {liveBasket?.map((veg) => (
-            <AdminVeg obj={veg} />
-          ))}
-        </Card.Group>
-      </Segment>
+    <Container style={{ padding: '1em' }}>
+      <Card.Group style={{ height: '100%' }}>
+        <Card fluid>
+          <Card.Content>
+            <Button floated="right" color="purple" content="To Basket Admin" onClick={() => Router.push('/basketAdmin')} />
+            <Card.Header as="h1">Basket Admin</Card.Header>
+          </Card.Content>
+          <Card.Content>
+            Modify your current basket or create next weeks basket
+          </Card.Content>
+        </Card>
+        <Card fluid>
+          <Card.Content>
+            <Button floated="right" color="purple" content="To Veg Admin" onClick={() => Router.push('/vegAdmin')} />
+            <Card.Header as="h1">Veg Admin</Card.Header>
+          </Card.Content>
+          <Card.Content>
+            Add crops to your database
+          </Card.Content>
+        </Card>
+        <Card fluid>
+          <Card.Content>
+            <Button floated="right" color="purple" content="To Product Admin" />
+            <Card.Header as="h1">Basket Admin</Card.Header>
+          </Card.Content>
+          <Card.Content>
+            Add products for sale and adjust quantaties
+          </Card.Content>
+        </Card>
+      </Card.Group>
     </Container>
   );
 }
