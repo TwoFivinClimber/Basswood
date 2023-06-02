@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import AdminVegModal from './AdminVegModal';
 
-function AdminVegCard({ obj }) {
+function AdminVegCard({ obj, onUpdate }) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -21,12 +21,13 @@ function AdminVegCard({ obj }) {
           <Card.Description content={`${obj.description?.slice(0, 75)}...`} />
         </Card.Content>
       </Card>
-      <AdminVegModal open={open} setOpen={setOpen} obj={obj} />
+      <AdminVegModal open={open} setOpen={setOpen} obj={obj} onUpdate={onUpdate} />
     </>
   );
 }
 
 AdminVegCard.propTypes = {
+  onUpdate: PropTypes.func.isRequired,
   obj: PropTypes.shape({
     img: PropTypes.string,
     name: PropTypes.string,

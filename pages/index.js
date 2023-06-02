@@ -69,7 +69,7 @@ export default function Home() {
         vertical
       >
         <Grid columns={2}>
-          <Grid.Column verticalAlign="center" width={6}>
+          <Grid.Column textAlign="center" width={6}>
             <Header as="h3" style={{ fontSize: '2em' }}>
               We are Growing
             </Header>

@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import React, { useState } from 'react';
 import {
   Modal, Image, Button, Header,
@@ -5,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import VegForm from './VegForm';
 
-function AdminVegModal({ obj, open, setOpen }) {
+function AdminVegModal({ obj, open, setOpen, onUpdate }) {
   const [edit, setEdit] = useState(false);
   return (
     <Modal
@@ -14,7 +15,7 @@ function AdminVegModal({ obj, open, setOpen }) {
       open={open}
     >
       {edit ? (
-        <VegForm obj={obj} edit={edit} setEdit={setEdit} />
+        <VegForm obj={obj} edit={edit} setEdit={setEdit} onUpdate={onUpdate} />
       ) : (
         <>
           <Modal.Content image>
@@ -45,6 +46,7 @@ function AdminVegModal({ obj, open, setOpen }) {
 AdminVegModal.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
   obj: PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,

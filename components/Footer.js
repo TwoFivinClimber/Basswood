@@ -11,7 +11,7 @@ function Footer() {
       borderless
       style={{ justifyContent: 'center' }}
     >
-      <Menu.Item centered>
+      <Menu.Item>
         &copy; Baswood Farm All Rights Reserved.
       </Menu.Item>
       <Menu.Item>

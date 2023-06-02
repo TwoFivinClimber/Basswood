@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import axios from 'axios';
 
 const dbUrl = 'https://basswood-b5622-default-rtdb.firebaseio.com';
@@ -20,4 +21,21 @@ const getBasketVeg = (bsktId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getVeggies, getSingleVeg, getBasketVeg };
+const updateVeg = (input) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/veg/${input.id}.json`, input)
+    .then(resolve)
+    .catch(reject);
+});
+
+const createVeg = (input) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/veg.json`, input)
+    .then((response) => {
+      const id = response.data.name;
+      const update = { id };
+      axios.patch(`${dbUrl}/veg/${id}.json`, update)
+        .then(resolve);
+    })
+    .catch((error) => reject(console.warn(error)));
+});
+
+export { getVeggies, getSingleVeg, getBasketVeg, createVeg, updateVeg };

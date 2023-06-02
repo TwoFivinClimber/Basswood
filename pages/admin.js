@@ -27,7 +27,7 @@ function Admin() {
         <Card fluid>
           <Card.Content>
             <Button floated="right" color="purple" content="To Product Admin" />
-            <Card.Header as="h1">Basket Admin</Card.Header>
+            <Card.Header as="h1">Product Admin</Card.Header>
           </Card.Content>
           <Card.Content>
             Add products for sale and adjust quantaties
