@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import AdminVegModal from './AdminVegModal';
 
-function AdminVegCard({ obj, onUpdate }) {
+function BasketVegCard({ obj, onUpdate }) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -26,7 +26,7 @@ function AdminVegCard({ obj, onUpdate }) {
   );
 }
 
-AdminVegCard.propTypes = {
+BasketVegCard.propTypes = {
   onUpdate: PropTypes.func.isRequired,
   obj: PropTypes.shape({
     img: PropTypes.string,
@@ -35,4 +35,4 @@ AdminVegCard.propTypes = {
   }).isRequired,
 };
 
-export default AdminVegCard;
+export default BasketVegCard;

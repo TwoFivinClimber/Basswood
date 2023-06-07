@@ -26,7 +26,7 @@ function VegAdmin() {
           Add Veg
         </Button>
       </Header>
-      <Segment>
+      <Segment style={{ minHeight: '100vh' }}>
         <Header content="The Garden" />
         <Divider />
         <VegForm onUpdate={getTheContent} obj={{}} showForm={showForm} setShowForm={setShowForm} />

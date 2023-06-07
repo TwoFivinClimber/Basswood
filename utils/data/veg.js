@@ -38,4 +38,10 @@ const createVeg = (input) => new Promise((resolve, reject) => {
     .catch((error) => reject(console.warn(error)));
 });
 
-export { getVeggies, getSingleVeg, getBasketVeg, createVeg, updateVeg };
+const deleteVeg = (id) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/veg/${id}.json`)
+    .then(resolve)
+    .catch(reject);
+});
+
+export { getVeggies, getSingleVeg, getBasketVeg, createVeg, updateVeg, deleteVeg };

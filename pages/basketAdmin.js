@@ -5,7 +5,7 @@ import {
 import AsyncSelect from 'react-select';
 import { getVeggies } from '../utils/data/veg';
 import { getCurrentBasket } from '../utils/data/mergedData';
-import AdminVegCard from '../components/AdminVegCard';
+import BasketVegCard from '../components/BasketVegCard';
 
 function Admin() {
   const currentDate = new Date();
@@ -68,7 +68,7 @@ function Admin() {
           <br />
           <Card.Group centered>
             {currentBasket.veg?.map((veg) => (
-              <AdminVegCard key={veg.id} obj={veg} />
+              <BasketVegCard key={veg.id} obj={veg} />
             ))}
           </Card.Group>
         </Segment>
@@ -96,7 +96,7 @@ function Admin() {
             <br />
             <Card.Group centered>
               { selected.length ? selected.map((veg) => (
-                <AdminVegCard key={veg.id} obj={veg} />
+                <BasketVegCard key={veg.id} obj={veg} />
               )) : <Header content="Select Veggies To Create Basket" />}
             </Card.Group>
             <br />

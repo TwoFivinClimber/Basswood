@@ -33,6 +33,11 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
     }
   };
 
+  const cancleFunc = () => {
+    setEdit(!edit);
+    setShowForm(!showForm);
+  };
+
   useEffect(() => {
     if (obj?.id) {
       setInput(obj);
@@ -48,12 +53,14 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
           name="name"
           onChange={handleChange}
           value={input.name}
+          required
         />
         <Form.Input
           label="Image"
           name="img"
           onChange={handleChange}
           value={input.img}
+          required
         />
         <Form.TextArea
           label="Description"
@@ -61,9 +68,10 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
           value={input.description}
           rows={6}
           onChange={handleChange}
+          required
         />
         <Button type="submit" content="Submit" positive />
-        <Button type="button" negative content="Cancel" onClick={showForm ? () => setShowForm(!showForm) : () => setEdit(!edit)} />
+        <Button type="button" negative content="Cancel" onClick={() => cancleFunc()} />
       </Form>
     </Segment>
   );
