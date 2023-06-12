@@ -2,11 +2,11 @@ import axios from 'axios';
 
 const dbUrl = 'https://basswood-b5622-default-rtdb.firebaseio.com';
 
-// const getBasket = (id) => new Promise((resolve, reject) => {
-//   axios.get(`${dbUrl}/basket/${id}.json`)
-//     .then(resolve)
-//     .catch(reject);
-// });
+const getBasket = (id) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/basket/${id}.json`)
+    .then(resolve)
+    .catch(reject);
+});
 
 // const getBasketByWeek = (week) => new Promise((resolve, reject) => {
 //   axios.get(`${dbUrl}/basket.json?orderBy="week"&equalTo=${week}`)
@@ -21,4 +21,4 @@ const getActiveBasket = () => new Promise((resolve, reject) => {
 });
 
 // eslint-disable-next-line import/prefer-default-export
-export { getActiveBasket };
+export { getActiveBasket, getBasket };

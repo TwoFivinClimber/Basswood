@@ -34,8 +34,11 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   };
 
   const cancleFunc = () => {
-    setEdit(!edit);
+    if (edit) {
+      setEdit(!edit);
+    }
     setShowForm(!showForm);
+    setInput(initialState);
   };
 
   useEffect(() => {

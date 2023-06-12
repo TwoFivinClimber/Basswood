@@ -68,7 +68,7 @@ function Admin() {
           <br />
           <Card.Group centered>
             {currentBasket.veg?.map((veg) => (
-              <BasketVegCard key={veg.id} obj={veg} />
+              <BasketVegCard key={veg.id} bsktId={currentBasket.id} obj={veg} onUpdate={getTheContent} />
             ))}
           </Card.Group>
         </Segment>
@@ -89,7 +89,7 @@ function Admin() {
                 getOptionLabel={(i) => i.name}
                 onChange={handleChange}
                 defaultOptions
-                placeholder="Select...."
+                // placeholder="Select...."
                 value=""
               />
             </Form.Field>

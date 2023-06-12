@@ -44,4 +44,10 @@ const deleteVeg = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getVeggies, getSingleVeg, getBasketVeg, createVeg, updateVeg, deleteVeg };
+const deleteBasketVeg = (id) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/bsktVeg/${id}.json`)
+    .then(resolve)
+    .catch(reject);
+});
+
+export { getVeggies, getSingleVeg, getBasketVeg, createVeg, updateVeg, deleteVeg, deleteBasketVeg };

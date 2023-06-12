@@ -4,18 +4,26 @@ import {
   Modal, Image, Button, Header, Confirm,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import VegForm from './VegForm';
 import { deleteVeg } from '../utils/data/veg';
+import { deleteThisBasketVeg } from '../utils/data/mergedData';
 
-function AdminVegModal({ obj, open, setOpen, onUpdate }) {
+function AdminVegModal({ obj, bsktId, open, setOpen, onUpdate }) {
   const [edit, setEdit] = useState(false);
   const [confirm, setConfirm] = useState(false);
+  const router = useRouter();
 
-  const deleteVegetable = () => {
-    deleteVeg(obj.id).then(() => {
-      onUpdate();
+  const deleteRemoveFunc = () => {
+    if (router.route === '/basketAdmin') {
+      deleteThisBasketVeg(bsktId, obj.id).then(() => onUpdate());
       setOpen(!open);
-    });
+    } else {
+      deleteVeg(obj.id).then(() => {
+        onUpdate();
+        setOpen(!open);
+      });
+    }
   };
 
   return (
@@ -37,15 +45,31 @@ function AdminVegModal({ obj, open, setOpen, onUpdate }) {
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-              <Button color="blue" onClick={() => setEdit(true)}>
-                Edit
-              </Button>
-              <Button onClick={() => setOpen(!open)} color="green">
-                Close
-              </Button>
-              <Button negative onClick={() => setConfirm(!confirm)}>
-                Delete
-              </Button>
+              {router.route === '/basketAdmin' ? (
+                <>
+                  <Button color="blue" onClick={() => setEdit(true)}>
+                    Edit Veg
+                  </Button>
+                  <Button onClick={() => setOpen(!open)} color="green">
+                    Close
+                  </Button>
+                  <Button negative onClick={() => setConfirm(!confirm)}>
+                    Remove From Basket
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button color="blue" onClick={() => setEdit(true)}>
+                    Edit
+                  </Button>
+                  <Button onClick={() => setOpen(!open)} color="green">
+                    Close
+                  </Button>
+                  <Button negative onClick={() => setConfirm(!confirm)}>
+                    Delete
+                  </Button>
+                </>
+              )}
             </Modal.Actions>
           </>
         )}
@@ -53,10 +77,10 @@ function AdminVegModal({ obj, open, setOpen, onUpdate }) {
       <Confirm
         open={confirm}
         onCancel={() => setConfirm(!confirm)}
-        onConfirm={() => deleteVegetable()}
+        onConfirm={() => deleteRemoveFunc()}
         color="red"
-        header="Delete Vegetable From Database"
-        content={`Are you sure you want to delete ${obj.name} ?`}
+        header={router.route === '/basketAdmin' ? (`Remove ${obj.name} from the current basket`) : (`Delete ${obj.name} From Database`)}
+        content="Are you sure ?"
       />
     </>
   );
@@ -66,12 +90,17 @@ AdminVegModal.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
+  bsktId: PropTypes.number,
   obj: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
     description: PropTypes.string,
     img: PropTypes.string,
   }).isRequired,
+};
+
+AdminVegModal.defaultProps = {
+  bsktId: null,
 };
 
 export default AdminVegModal;

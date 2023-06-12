@@ -1,5 +1,5 @@
 import { getActiveBasket } from './basket';
-import { getBasketVeg, getSingleVeg } from './veg';
+import { getBasketVeg, getSingleVeg, deleteBasketVeg } from './veg';
 
 const getCurrentBasket = () => new Promise((resolve, reject) => {
   getActiveBasket().then((basket) => {
@@ -12,5 +12,13 @@ const getCurrentBasket = () => new Promise((resolve, reject) => {
   }).catch(reject);
 });
 
+const deleteThisBasketVeg = (bsktId, vegId) => new Promise((resolve, reject) => {
+  getBasketVeg(bsktId).then((vegArr) => {
+    const deleteVeg = vegArr.find((i) => i.veg === vegId);
+    deleteBasketVeg(deleteVeg.id).then(resolve);
+  })
+    .catch(reject);
+});
+
 // eslint-disable-next-line import/prefer-default-export
-export { getCurrentBasket };
+export { getCurrentBasket, deleteThisBasketVeg };
