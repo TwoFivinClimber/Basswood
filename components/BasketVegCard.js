@@ -1,16 +1,17 @@
+/* eslint-disable object-curly-newline */
 import React, { useState } from 'react';
 import {
   Card, Image,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import AdminVegModal from './AdminVegModal';
+import BsktAdminVegModal from './BaskAdminVegModal';
 
-function BasketVegCard({ obj, bsktId, onUpdate }) {
+function BasketVegCard({ obj, bsktId, onUpdate, setSelected }) {
   const [open, setOpen] = useState(false);
   return (
     <>
       <Card
-        onClick={setOpen}
+        onClick={() => setOpen(!open)}
         style={{
           display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '30em',
         }}
@@ -21,14 +22,15 @@ function BasketVegCard({ obj, bsktId, onUpdate }) {
           <Card.Description content={`${obj.description?.slice(0, 75)}...`} />
         </Card.Content>
       </Card>
-      <AdminVegModal open={open} setOpen={setOpen} bsktId={bsktId} obj={obj} onUpdate={onUpdate} />
+      <BsktAdminVegModal open={open} setOpen={setOpen} setSelected={setSelected} bsktId={bsktId} obj={obj} onUpdate={onUpdate} />
     </>
   );
 }
 
 BasketVegCard.propTypes = {
   onUpdate: PropTypes.func.isRequired,
-  bsktId: PropTypes.number,
+  bsktId: PropTypes.string,
+  setSelected: PropTypes.func,
   obj: PropTypes.shape({
     img: PropTypes.string,
     name: PropTypes.string,
@@ -38,6 +40,7 @@ BasketVegCard.propTypes = {
 
 BasketVegCard.defaultProps = {
   bsktId: null,
+  setSelected: null,
 };
 
 export default BasketVegCard;
