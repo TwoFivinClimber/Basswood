@@ -4,7 +4,13 @@ const dbUrl = 'https://basswood-b5622-default-rtdb.firebaseio.com';
 
 const getBasket = (id) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/basket/${id}.json`)
-    .then(resolve)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+const getBasketHistory = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/basket.json?orderBy="active"&equalTo=false`)
+    .then((baskets) => resolve(Object.values(baskets.data)))
     .catch(reject);
 });
 
@@ -42,11 +48,11 @@ const disableBasket = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-// const getBasketByWeek = (week) => new Promise((resolve, reject) => {
-//   axios.get(`${dbUrl}/basket.json?orderBy="week"&equalTo=${week}`)
-//     .then((data) => resolve(data))
-//     .catch(reject);
-// });
+const getBasketByWeek = (week) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/basket.json?orderBy="week"&equalTo=${week}`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch(reject);
+});
 
 // eslint-disable-next-line object-curly-newline
-export { getActiveBasket, getBasket, updateBasket, createBasket, getActiveBaskets, disableBasket };
+export { getActiveBasket, getBasket, updateBasket, createBasket, getActiveBaskets, disableBasket, getBasketByWeek, getBasketHistory };

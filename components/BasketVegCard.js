@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import BsktAdminVegModal from './BaskAdminVegModal';
 
-function BasketVegCard({ obj, bsktId, onUpdate, setSelected }) {
+function BasketVegCard({ obj, bsktId, onUpdate, setSelected, disabled }) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -22,15 +22,16 @@ function BasketVegCard({ obj, bsktId, onUpdate, setSelected }) {
           <Card.Description content={`${obj.description?.slice(0, 75)}...`} />
         </Card.Content>
       </Card>
-      <BsktAdminVegModal open={open} setOpen={setOpen} setSelected={setSelected} bsktId={bsktId} obj={obj} onUpdate={onUpdate} />
+      <BsktAdminVegModal open={open} setOpen={setOpen} setSelected={setSelected} disabled={disabled} bsktId={bsktId} obj={obj} onUpdate={onUpdate} />
     </>
   );
 }
 
 BasketVegCard.propTypes = {
-  onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func,
   bsktId: PropTypes.string,
   setSelected: PropTypes.func,
+  disabled: PropTypes.bool,
   obj: PropTypes.shape({
     img: PropTypes.string,
     name: PropTypes.string,
@@ -41,6 +42,8 @@ BasketVegCard.propTypes = {
 BasketVegCard.defaultProps = {
   bsktId: null,
   setSelected: null,
+  onUpdate: null,
+  disabled: false,
 };
 
 export default BasketVegCard;

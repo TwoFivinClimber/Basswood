@@ -8,9 +8,10 @@ import { getVeggies } from '../utils/data/veg';
 import { getCurrentBasket } from '../utils/data/mergedData';
 import BasketVegCard from '../components/BasketVegCard';
 import { createBasketVeg } from '../utils/data/basketVeg';
-import { updateBasket } from '../utils/data/basket';
+import { getBasketHistory, updateBasket } from '../utils/data/basket';
+import BasketHistoryCard from '../components/BasketHistoryCard';
 
-const prevState = {
+const initialState = {
   description: '',
   title: '',
 };
@@ -18,14 +19,17 @@ const prevState = {
 function Admin() {
   const router = useRouter();
   const [currentBasket, setCurrentBasket] = useState({});
+  const [basketHistory, setBasketHistory] = useState([]);
+  const sortedHistory = basketHistory.sort((a, b) => b.week - a.week);
   const [veggies, setVeggies] = useState([]);
   const filteredVeggies = veggies.filter((veggie) => !currentBasket.veg?.some((s) => s.id === veggie.id));
   const [edit, setEdit] = useState(false);
-  const [input, setInput] = useState(prevState);
+  const [input, setInput] = useState(initialState);
 
   const getTheContent = () => {
     getVeggies().then(setVeggies);
     getCurrentBasket().then(setCurrentBasket);
+    getBasketHistory().then(setBasketHistory);
   };
 
   const handleChange = (e) => {
@@ -60,6 +64,7 @@ function Admin() {
     };
     updateBasket(obj).then(() => getTheContent());
     setEdit(!edit);
+    setInput(initialState);
   };
 
   useEffect(() => {
@@ -120,6 +125,15 @@ function Admin() {
               ) : '' }
             </Form>
           </Segment>
+        </Segment>
+        <Segment>
+          <Header as="h3" content="Basket History" />
+          <br />
+          <Card.Group centered>
+            {sortedHistory?.map((bskt) => (
+              <BasketHistoryCard key={bskt.id} obj={bskt} />
+            ))}
+          </Card.Group>
         </Segment>
       </Segment>
     </Container>

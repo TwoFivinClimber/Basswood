@@ -1,10 +1,25 @@
 // eslint-disable-next-line object-curly-newline
-import { createBasket, disableBasket, getActiveBasket, getActiveBaskets } from './basket';
+import { createBasket, disableBasket, getActiveBasket, getActiveBaskets, getBasket } from './basket';
 import { getBasketVeg, getSingleVeg } from './veg';
 import { createBasketVeg, deleteBasketVeg } from './basketVeg';
 
 const getCurrentBasket = () => new Promise((resolve, reject) => {
   getActiveBasket().then((basket) => {
+    if (basket) {
+      getBasketVeg(basket.id).then((bsktArr) => {
+        const getTheVeggies = bsktArr.map((i) => getSingleVeg(i.veg));
+        Promise.all(getTheVeggies).then((vegArr) => {
+          resolve({ ...basket, veg: vegArr });
+        });
+      });
+    } else {
+      resolve({});
+    }
+  }).catch(reject);
+});
+
+const getBasketById = (id) => new Promise((resolve, reject) => {
+  getBasket(id).then((basket) => {
     if (basket) {
       getBasketVeg(basket.id).then((bsktArr) => {
         const getTheVeggies = bsktArr.map((i) => getSingleVeg(i.veg));
@@ -39,4 +54,6 @@ const createNewWeekBasket = (basketObj, vegArr) => new Promise((resolve, reject)
 });
 
 // eslint-disable-next-line import/prefer-default-export
-export { getCurrentBasket, deleteThisBasketVeg, createNewWeekBasket };
+export {
+  getCurrentBasket, deleteThisBasketVeg, createNewWeekBasket, getBasketById,
+};

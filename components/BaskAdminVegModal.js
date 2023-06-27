@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 import { deleteThisBasketVeg } from '../utils/data/mergedData';
 
-function BsktAdminVegModal({ obj, bsktId, setSelected, open, setOpen, onUpdate }) {
+function BsktAdminVegModal({ obj, bsktId, setSelected, open, setOpen, onUpdate, disabled }) {
   const [confirm, setConfirm] = useState(false);
 
   const deleteRemoveFunc = () => {
@@ -40,7 +40,7 @@ function BsktAdminVegModal({ obj, bsktId, setSelected, open, setOpen, onUpdate }
           <Button onClick={() => setOpen(!open)} color="green">
             Close
           </Button>
-          <Button negative onClick={bsktId ? () => setConfirm(!confirm) : () => deleteRemoveFunc()}>
+          <Button disabled={disabled} negative onClick={bsktId ? () => setConfirm(!confirm) : () => deleteRemoveFunc()}>
             Remove From Basket
           </Button>
         </Modal.Actions>
@@ -63,6 +63,7 @@ BsktAdminVegModal.propTypes = {
   onUpdate: PropTypes.func.isRequired,
   bsktId: PropTypes.string,
   setSelected: PropTypes.func,
+  disabled: PropTypes.bool,
   obj: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -74,6 +75,7 @@ BsktAdminVegModal.propTypes = {
 BsktAdminVegModal.defaultProps = {
   bsktId: null,
   setSelected: null,
+  disabled: false,
 };
 
 export default BsktAdminVegModal;
