@@ -28,7 +28,7 @@ export default function Home() {
                 zIndex: '1',
                 position: 'absolute',
                 color: '#ede7de',
-                fontSize: '4em',
+                fontSize: '3.5em',
               }}
             />
             <Link href="/basswood" passHref>
@@ -51,7 +51,7 @@ export default function Home() {
                 zIndex: '1',
                 position: 'absolute',
                 color: '#ede7de',
-                fontSize: '4em',
+                fontSize: '3.5em',
               }}
             />
             <Link href="/woodhouse" passHref>
@@ -69,7 +69,7 @@ export default function Home() {
         vertical
       >
         <Grid columns={2}>
-          <Grid.Column verticalAlign="center" width={6}>
+          <Grid.Column textAlign="center" width={6}>
             <Header as="h3" style={{ fontSize: '2em' }}>
               We are Growing
             </Header>
