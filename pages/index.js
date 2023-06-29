@@ -67,6 +67,7 @@ export default function Home() {
           width: '85%', background: 'transparent', padding: '6em 0em', marginRight: 'auto', marginLeft: 'auto',
         }}
         vertical
+        borderless
       >
         <Grid columns={2}>
           <Grid.Column textAlign="center" width={6}>
