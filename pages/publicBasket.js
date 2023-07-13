@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Header, Image } from 'semantic-ui-react';
+import {
+  Card, Container, Header, Image,
+} from 'semantic-ui-react';
 import { getCurrentBasket } from '../utils/data/mergedData';
+import PublicVegCard from '../components/PublicVegCard';
 
 function PublicBasket() {
   const [basket, setBasket] = useState({});
@@ -18,6 +21,11 @@ function PublicBasket() {
       <br />
       <Header as="h3">{basket.description}</Header>
       <br />
+      <Card.Group centered>
+        {basket.veg?.map((veg) => (
+          <PublicVegCard obj={veg} />
+        ))}
+      </Card.Group>
     </Container>
   );
 }

@@ -28,8 +28,15 @@ function Navbar() {
         </Link>
         <Dropdown item labeled icon="angle double down">
           <Dropdown.Menu>
-            <Menu.Item>Contact Us</Menu.Item>
-            <Menu.Item>Contact Us</Menu.Item>
+            <Link passHref href="/">
+              <Menu.Item>Home</Menu.Item>
+            </Link>
+            <Link passHref href="/woodhouse">
+              <Menu.Item>Woodhouse</Menu.Item>
+            </Link>
+            <Link passHref href="admin">
+              <Menu.Item>Admin</Menu.Item>
+            </Link>
           </Dropdown.Menu>
         </Dropdown>
       </Menu.Menu>

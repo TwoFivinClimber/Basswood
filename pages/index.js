@@ -2,8 +2,10 @@ import Link from 'next/link';
 import {
   Segment, Header, Container, Grid, Button, Image,
 } from 'semantic-ui-react';
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Header className="welcome-header" as="h1" textAlign="center" content="Welcome to Basswood Farm" />
@@ -77,10 +79,11 @@ export default function Home() {
           </Grid.Column>
           <Grid.Column verticalAlign="middle" width={10}>
             <p style={{ fontSize: '1.5em' }}>Our budding CSA project is ramping up. Weekly offerings of classic and interesting veggies, distributed to the community.</p>
-            <Button color="red" content="Learm More" />
+            <Button color="red" onClick={() => router.push('/csa')} content="Learm More" />
           </Grid.Column>
         </Grid>
       </Segment>
+      <Header as="h1" style={{ textAlign: 'center' }} content="Instagram Goes Here" />
     </>
   );
 }
