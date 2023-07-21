@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Container, Grid, Header, Image,
 } from 'semantic-ui-react';
+import about from '../utils/data/copy/about';
 
 function About() {
   return (
@@ -15,20 +16,20 @@ function About() {
         </Grid.Column>
       </Grid>
       <Container>
-        <Header content="Lorem ipsum dolor sit amet" />
+        <Header content={about.header} />
         <p style={{ fontSize: '18px' }}>
-          In the heart of Tennessee, Basswood Farm takes pride in its horses, from foals to adults - Thoroughbreds, KWPN and TB/warmblood crosses. Originally a breeder of successful hunter-jumpers, we turned to dressage in 2003, with the importation of several Dutch horses.  Our mares are bred to top quality Dutch Warmblood stallions, and our foals are raised with love.  Though we specialize in dressage, we do have a few hunter-jumper prospects as well.
+          {about.general}
         </p>
         <p style={{ fontSize: '18px' }}>
-          We have horses suited to most levels of riders. If you are looking for a dressage prospect, we have home-bred KWPN horses by top Dutch and American KWPN stallions, out of excellent Dutch KWPN mares.  Many of our horses are also out of jumper lines, and may do well in the jumper ring.
+          {about.horses}
         </p>
         <p style={{ fontSize: '18px' }}>
-          Our barn is gaining in reputation, and a look at our horses will tell you why. Thank you for visiting our website - we hope you will enjoy seeing what we have to offer.
+          {about.barn}
         </p>
         <p style={{ fontSize: '18px' }}>
-          Brenda Bass - Owner
+          {about.brenda}
           <br />
-          Basswood Farm
+          {about.basswood}
         </p>
       </Container>
     </Container>

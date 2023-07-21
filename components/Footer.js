@@ -3,6 +3,8 @@ import React from 'react';
 import {
   Menu, Grid, Image, Container, Divider,
 } from 'semantic-ui-react';
+import generateMenuConfig from '../utils/data/nav';
+import MenuLink from './MenuLink';
 
 function Footer() {
   return (
@@ -23,26 +25,14 @@ function Footer() {
               </Menu.Item>
               <Grid columns="2">
                 <Grid.Column>
-                  <Menu.Item>
-                    <Link passHref href="/">
-                      Home
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <Link passHref href="/about">
-                      About Us
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <Link passHref href="/contact">
-                      Contact Us
-                    </Link>
-                  </Menu.Item>
+                  {generateMenuConfig('nav')?.map((i) => (
+                    <MenuLink href={i.href} name={i.name} />
+                  ))}
                 </Grid.Column>
                 <Grid.Column>
-                  <Menu.Item content="Horse Boarding" />
-                  <Menu.Item content="Air BnB" />
-                  <Menu.Item content="Experiences" />
+                  {generateMenuConfig('dropdown')?.map((i) => (
+                    <MenuLink href={i.href} name={i.name} />
+                  ))}
                 </Grid.Column>
               </Grid>
             </Grid.Column>
@@ -54,35 +44,26 @@ function Footer() {
               </Menu.Item>
               <Grid columns={2}>
                 <Grid.Column>
-                  <Menu.Item>
-                    <Link passHref href="/csa">
-                      CSA
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item content="Products" />
+                  {generateMenuConfig('foot3')?.map((i) => (
+                    <MenuLink href={i.href} name={i.name} />
+                  ))}
                 </Grid.Column>
                 <Grid.Column>
-                  <Link passHref href="/publicBasket">
-                    <Menu.Item>
-                      This Weeks Basket
-                    </Menu.Item>
-                  </Link>
-                  <Menu.Item content="Meet The Goats" />
+                  {generateMenuConfig('foot4')?.map((i) => (
+                    <MenuLink href={i.href} name={i.name} />
+                  ))}
                 </Grid.Column>
               </Grid>
             </Grid.Column>
             <Grid.Column width={3}>
-              <Menu.Item header as="h3" content="Connect With Us" />
-              <Menu.Item>
-                <Link passHref target="blank" href="https://www.instagram.com/woodhousehomestead/">
-                  Insgagram
+              <Menu.Item header as="h3">
+                <Link passHref href="/contact">
+                  Connect With Us
                 </Link>
               </Menu.Item>
-              <Menu.Item>
-                <Link passHref href="https://www.facebook.com/pages/Basswood-Farm/156409324399440">
-                  Facebook
-                </Link>
-              </Menu.Item>
+              {generateMenuConfig('foot5')?.map((i) => (
+                <MenuLink href={i.href} name={i.name} />
+              ))}
             </Grid.Column>
           </Grid.Row>
         </Grid>

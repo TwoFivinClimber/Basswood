@@ -3,7 +3,7 @@ import {
   Modal, Button, Header, Card,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import BasketVegCard from './BasketVegCard';
+import BasketVegCard from '../BasketVegCard';
 
 function BasketViewModal({ obj, open, setOpen }) {
   // const openFunc = () => {

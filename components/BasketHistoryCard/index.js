@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Header, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import BasketViewModal from './BasketViewModal';
-import { getBasketById } from '../utils/data/mergedData';
+import { getBasketById } from '../../utils/data/mergedData';
 
 function BasketHistoryCard({ obj }) {
   const [basketDetail, setBasketDetail] = useState({});

@@ -6,8 +6,8 @@ import {
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import VegForm from './VegForm';
-import { deleteVeg } from '../utils/data/veg';
-import { deleteThisBasketVeg } from '../utils/data/mergedData';
+import { deleteVeg } from '../../utils/data/veg';
+import { deleteThisBasketVeg } from '../../utils/data/mergedData';
 
 function AdminVegModal({ obj, bsktId, open, setOpen, onUpdate }) {
   const [edit, setEdit] = useState(false);

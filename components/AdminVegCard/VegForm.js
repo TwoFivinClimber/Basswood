@@ -4,7 +4,7 @@ import {
   Header, Segment, Form, Button,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { createVeg, updateVeg } from '../utils/data/veg';
+import { createVeg, updateVeg } from '../../utils/data/veg';
 
 const initialState = {
   description: '',

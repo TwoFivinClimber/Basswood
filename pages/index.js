@@ -3,6 +3,7 @@ import {
   Segment, Header, Container, Grid, Button, Image,
 } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
+import home from '../utils/data/copy/home';
 
 export default function Home() {
   const router = useRouter();
@@ -69,7 +70,6 @@ export default function Home() {
           width: '85%', background: 'transparent', padding: '6em 0em', marginRight: 'auto', marginLeft: 'auto',
         }}
         vertical
-        borderless
       >
         <Grid columns={2}>
           <Grid.Column textAlign="center" width={6}>
@@ -78,7 +78,7 @@ export default function Home() {
             </Header>
           </Grid.Column>
           <Grid.Column verticalAlign="middle" width={10}>
-            <p style={{ fontSize: '1.5em' }}>Our budding CSA project is ramping up. Weekly offerings of classic and interesting veggies, distributed to the community.</p>
+            <p style={{ fontSize: '1.5em' }}>{home.csaFeature}</p>
             <Button color="red" onClick={() => router.push('/csa')} content="Learm More" />
           </Grid.Column>
         </Grid>

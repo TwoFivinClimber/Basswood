@@ -3,14 +3,17 @@ import {
   Button,
   Card, Container, Divider, Header, List, Segment,
 } from 'semantic-ui-react';
+import { useRouter } from 'next/router';
+import boardingCopy from '../utils/data/copy/boarding';
 
 function Boarding() {
+  const router = useRouter();
   return (
     <Container>
       <br />
       <Header textAlign="center" as="h1">Boarding at Basswood Farm</Header>
       <p style={{ fontSize: '18px', textAlign: 'center' }}>
-        Form a short stay to becoming part of the farm, we take care of your equine needs
+        {boardingCopy.mission}
       </p>
       <Divider />
       <Header textAlign="center" as="h2">Rates</Header>
@@ -30,7 +33,7 @@ function Boarding() {
                 </List>
               </Card.Description>
             </Segment>
-            <Button color="orange" content="Contact Us" />
+            <Button color="orange" onClick={() => router.push('/contact')} content="Contact Us" />
           </Card.Content>
         </Card>
         <Card style={{ backgroundColor: 'tan' }}>
@@ -47,20 +50,23 @@ function Boarding() {
                 </List>
               </Card.Description>
             </Segment>
-            <Button color="orange" content="Contact Us" />
+            <Button color="orange" onClick={() => router.push('/contact')} content="Contact Us" />
           </Card.Content>
         </Card>
       </Card.Group>
       <br />
       <Header textAlign="center" as="h1">What&apos;s Included</Header>
       <p style={{ fontSize: '18px' }}>
-        We take pride in offering the best.....It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+        {boardingCopy.included}
       </p>
       <Header>Highlights</Header>
-      <List as="ul">
-        <List.Item as="li" content="Something" />
-        <List.Item as="li" content="Something Else" />
-        <List.Item as="li" content="Something More" />
+      <List as="ul" style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
+        {boardingCopy.highlights.map((item) => (
+          <List.Item as="li" content={item} />
+        ))}
+        {boardingCopy.highlights.map((item) => (
+          <List.Item as="li" content={item} />
+        ))}
       </List>
       <br />
     </Container>

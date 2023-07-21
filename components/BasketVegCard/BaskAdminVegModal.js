@@ -4,7 +4,7 @@ import {
   Modal, Image, Button, Header, Confirm,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { deleteThisBasketVeg } from '../utils/data/mergedData';
+import { deleteThisBasketVeg } from '../../utils/data/mergedData';
 
 function BsktAdminVegModal({ obj, bsktId, setSelected, open, setOpen, onUpdate, disabled }) {
   const [confirm, setConfirm] = useState(false);

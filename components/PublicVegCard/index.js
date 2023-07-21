@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PublicVegModal from './PublicVegModal';
 
 function PublicVegCard({ obj }) {
-  const [open, setOpen] = useState();
+  const [open, setOpen] = useState(false);
 
   return (
     <>

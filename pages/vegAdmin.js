@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Divider, Header, Icon, Segment } from 'semantic-ui-react';
 import { getVeggies } from '../utils/data/veg';
 import AdminVegCard from '../components/AdminVegCard';
-import VegForm from '../components/VegForm';
+import VegForm from '../components/AdminVegCard/VegForm';
 
 function VegAdmin() {
   const [veggies, setVeggies] = useState([]);
