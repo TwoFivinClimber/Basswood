@@ -16,8 +16,8 @@ const menuConfig = [
     href: '/boarding',
   },
   {
-    name: 'Air BnB',
-    href: '/',
+    name: 'Stay With Us',
+    href: '/stayWithUs',
   },
   {
     name: 'Experiences',

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Card, Container, Header, Image,
 } from 'semantic-ui-react';
@@ -8,13 +8,16 @@ import PublicVegCard from '../components/PublicVegCard';
 function PublicBasket() {
   const [basket, setBasket] = useState({});
 
-  useEffect(() => {
+  const getTheBasket = () => {
     getCurrentBasket().then(setBasket);
-  }, []);
+  };
+
+  getTheBasket();
+
   return (
     <Container>
       <br />
-      <Header as="h1" style={{ fontSize: '4em' }} textAlign="center" content={basket.title} />
+      <Header as="h1" style={{ fontSize: '3.5em' }} textAlign="center" content={basket.title} />
       <Header as="h3" textAlign="center" content={`Week ${basket.week}`} />
       <br />
       <Image size="huge" centered src="/images/basket.jpg" />
