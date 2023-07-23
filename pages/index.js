@@ -8,7 +8,7 @@ import home from '../utils/data/copy/home';
 export default function Home() {
   const router = useRouter();
   return (
-    <>
+    <div>
       <Header className="welcome-header" as="h1" textAlign="center" content="Welcome to Basswood Farm" />
       <Container
         style={{
@@ -84,6 +84,6 @@ export default function Home() {
         </Grid>
       </Segment>
       <Header as="h1" style={{ textAlign: 'center' }} content="Instagram Goes Here" />
-    </>
+    </div>
   );
 }
