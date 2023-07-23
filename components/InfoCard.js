@@ -15,7 +15,7 @@ function InfoCard({ obj, orient }) {
         <Divider />
 
         <Card.Description>
-          <Link style={{ fontWeight: 'bold' }} href={obj?.link} passHref>
+          <Link passHref style={{ fontWeight: 'bold' }} href={obj?.link}>
             Learn More
           </Link>
         </Card.Description>

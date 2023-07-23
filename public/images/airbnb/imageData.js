@@ -31,7 +31,6 @@ const airBnbImages = [
     original: '/images/airbnb/living.jpg',
     thumbnail: '/images/airbnb/living.jpg',
   },
-
 ];
 
 export default airBnbImages;
