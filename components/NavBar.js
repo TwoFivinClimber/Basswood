@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
 import { Menu, Image, Dropdown } from 'semantic-ui-react';
+import generateMenuConfig from '../utils/data/nav';
+import MenuLink from './MenuLink';
 
 function Navbar() {
   return (
     <Menu
       size="huge"
-      borderless
       attached="top"
+      borderless
     >
       <Link href="/" passHref>
         <Menu.Item header style={{ fontSize: '1.5em', padding: '.2em' }}>
@@ -17,19 +19,14 @@ function Navbar() {
       </Link>
 
       <Menu.Menu className="nav-menu" position="right">
-        <Link href="/" passHref>
-          <Menu.Item>Home</Menu.Item>
-        </Link>
-        <Link href="/about" passHref>
-          <Menu.Item>About Us</Menu.Item>
-        </Link>
-        <Link href="/contact" passHref>
-          <Menu.Item>Contact</Menu.Item>
-        </Link>
+        {generateMenuConfig('nav')?.map((i) => (
+          <MenuLink href={i.href} name={i.name} />
+        ))}
         <Dropdown item labeled icon="angle double down">
           <Dropdown.Menu>
-            <Menu.Item>Contact Us</Menu.Item>
-            <Menu.Item>Contact Us</Menu.Item>
+            {generateMenuConfig('dropdown')?.map((i) => (
+              <MenuLink href={i.href} name={i.name} />
+            ))}
           </Dropdown.Menu>
         </Dropdown>
       </Menu.Menu>

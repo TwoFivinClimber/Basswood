@@ -39,10 +39,10 @@ function Contact() {
           </Grid.Column>
         </Grid>
       </Container>
+      <br />
+      <br />
       <Container style={{ width: '90%' }}>
         <Form onSubmit={handleSubmit}>
-          <Header as="h3" content="Email: mdcook1968@gmail.com" />
-          <Header as="h2" content="or" />
           <Header as="h3" content="Send us a Message" />
           <Form.Group widths="equal">
             <Form.Input name="name" value={input.name} onChange={handleChange} fluid label="Name" placeholder="Name" required />
