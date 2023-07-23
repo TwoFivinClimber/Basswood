@@ -1,74 +1,57 @@
 import React from 'react';
 import {
   Button,
-  Card, Container, Divider, Header, List, Segment,
+  Container, Divider, Grid, Header, Segment,
 } from 'semantic-ui-react';
+import ImageGallery from 'react-image-gallery';
 import { useRouter } from 'next/router';
 import boardingCopy from '../utils/data/copy/boarding';
+import boardingImages from '../public/images/boarding/imageData';
 
 function Boarding() {
   const router = useRouter();
   return (
     <Container>
       <br />
-      <Header textAlign="center" as="h1">Boarding at Basswood Farm</Header>
+      <Header textAlign="center" as="h1" style={{ fontSize: '4em' }}>Boarding at Basswood Farm</Header>
       <p style={{ fontSize: '18px', textAlign: 'center' }}>
         {boardingCopy.mission}
       </p>
       <Divider />
-      <Header textAlign="center" as="h2">Rates</Header>
+      <ImageGallery
+        autoPlay
+        items={boardingImages}
+        slideDuration={700}
+        slideInterval={5000}
+        showFullscreenButton={false}
+      />
       <br />
-      <Card.Group itemsPerRow={2} style={{ justifyContent: 'space-between' }}>
-        <Card style={{ backgroundColor: 'tan' }}>
-          <Card.Content textAlign="center">
-            <Card.Header>Short Term</Card.Header>
-            <Segment>
-              <Card.Header as="h4">$120 / month</Card.Header>
-              <Card.Description>
-                <List as="ul">
-                  <List.Item as="li" content="Feed Included" />
-                  <List.Item as="li" content="Lots of Pets" />
-                  <List.Item as="li" content="Free to Roam" />
-                  <List.Item as="li" content="Grooming Services" />
-                </List>
-              </Card.Description>
-            </Segment>
-            <Button color="orange" onClick={() => router.push('/contact')} content="Contact Us" />
-          </Card.Content>
-        </Card>
-        <Card style={{ backgroundColor: 'tan' }}>
-          <Card.Content textAlign="center">
-            <Card.Header>Long Term</Card.Header>
-            <Segment>
-              <Card.Header as="h4">$2000 / year</Card.Header>
-              <Card.Description>
-                <List as="ul">
-                  <List.Item as="li" content="Feed Included" />
-                  <List.Item as="li" content="Lots of Pets" />
-                  <List.Item as="li" content="Free to Roam" />
-                  <List.Item as="li" content="Groomig Services" />
-                </List>
-              </Card.Description>
-            </Segment>
-            <Button color="orange" onClick={() => router.push('/contact')} content="Contact Us" />
-          </Card.Content>
-        </Card>
-      </Card.Group>
+      <Header as="h1" textAlign="center" content="Why Board With Us ?" />
       <br />
-      <Header textAlign="center" as="h1">What&apos;s Included</Header>
-      <p style={{ fontSize: '18px' }}>
-        {boardingCopy.included}
-      </p>
-      <Header>Highlights</Header>
-      <List as="ul" style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap' }}>
-        {boardingCopy.highlights.map((item) => (
-          <List.Item as="li" content={item} />
-        ))}
-        {boardingCopy.highlights.map((item) => (
-          <List.Item as="li" content={item} />
-        ))}
-      </List>
+      <p style={{ fontSize: '1.5em' }}>{boardingCopy.whyBoard}</p>
       <br />
+      <Header as="h1" textAlign="center" content="What We Offer" />
+      <br />
+      <Grid columns={2}>
+        <Grid.Column>
+          <Segment>
+            <Header textAlign="center" content="Short Term Boarding" />
+            <p>{boardingCopy.shortTerm}</p>
+          </Segment>
+        </Grid.Column>
+        <Grid.Column>
+          <Segment>
+            <Header textAlign="center" content="Long Term Boarding" />
+            <p>{boardingCopy.longTerm}</p>
+          </Segment>
+        </Grid.Column>
+      </Grid>
+      <br />
+      <Header as="h1" textAlign="center" content="Interested In Boarding With Us ?" />
+      <Header as="h3" textAlign="center">
+        Get In Touch
+        <Button style={{ marginLeft: '1em' }} onClick={(() => router.push('/contact'))} color="orange" content="Here" />
+      </Header>
     </Container>
   );
 }

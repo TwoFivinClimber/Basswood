@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  Button, Container, Header, Segment,
+  Button, Container, Divider, Header,
 } from 'semantic-ui-react';
 import ImageGallery from 'react-image-gallery';
 import Link from 'next/link';
 import { FaAirbnb } from 'react-icons/fa6';
-import imageData from '../public/images/airbnb/imageData';
+import airBnbImages from '../public/images/airbnb/imageData';
 import stayCopy from '../utils/data/copy/stay';
 
 function stayWithUs() {
@@ -14,15 +14,14 @@ function stayWithUs() {
       <br />
       <Header textAlign="center" style={{ fontSize: '4em' }} content="Stay With Us" />
       <p style={{ textAlign: 'center', fontSize: '1.5em' }}>Basswood Farm&apos;s Historic Franklin Farmouse </p>
-      <Segment>
-        <ImageGallery
-          autoPlay
-          items={imageData}
-          slideDuration={700}
-          slideInterval={5000}
-          showFullscreenButton={false}
-        />
-      </Segment>
+      <Divider />
+      <ImageGallery
+        autoPlay
+        items={airBnbImages}
+        slideDuration={700}
+        slideInterval={5000}
+        showFullscreenButton={false}
+      />
       <br />
       <Header content="Agro Tourism or Just to Get Away" as="h1" />
       <br />

@@ -12,7 +12,7 @@ function Navbar() {
       borderless
     >
       <Link href="/" passHref>
-        <Menu.Item header style={{ fontSize: '1.5em', padding: '.2em' }}>
+        <Menu.Item header style={{ fontSize: '2em', padding: '.2em' }}>
           <Image style={{ marginRight: '1em' }} src="/images/logo.png" size="tiny" />
           Basswood Farm
         </Menu.Item>
