@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import {
-  Segment, Header, Container, Grid, Button, Image,
+  Segment, Header, Container, Grid, Button, Image, Divider,
 } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import home from '../utils/data/copy/home';
@@ -16,6 +16,7 @@ export default function Home() {
           width: '85%',
         }}
       >
+        <Divider />
         <Grid columns={2}>
           <Grid.Column style={{
             position: 'relative',

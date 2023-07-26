@@ -49,7 +49,7 @@ const menuConfig = [
   },
   {
     name: 'Meet The Goats',
-    href: '/',
+    href: '/goats',
   },
   {
     name: 'Instagram',
