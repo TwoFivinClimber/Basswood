@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Grid, Image, Header, Form, Container, Button,
+  Grid, Image, Header, Form, Container, Button, Divider,
 } from 'semantic-ui-react';
 
 const initialState = {
@@ -32,6 +32,7 @@ function Contact() {
         <Grid textAlign="center" verticalAlig="middle" columns="2">
           <Grid.Column textAlign="center" verticalAlign="middle">
             <Header as="h1" style={{ fontSize: '4em' }} content="Get In Touch" />
+            <Divider />
             <Header as="h2" content="We'd Love To Hear From You" />
           </Grid.Column>
           <Grid.Column style={{ display: 'flex', justifyContent: 'center' }}>
