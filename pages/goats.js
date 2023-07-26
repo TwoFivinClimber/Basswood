@@ -6,7 +6,6 @@ import {
 import Link from 'next/link';
 import { goatFacts, goatCopy } from '../utils/data/copy/goats';
 
-
 function goats({ randomFact }) {
   return (
     <Container>
