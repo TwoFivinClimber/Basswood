@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Container, Grid, Header, Image,
 } from 'semantic-ui-react';
-import about from '../utils/data/copy/about';
+import about from './utils/data/copy/about';
 
 function About() {
   return (

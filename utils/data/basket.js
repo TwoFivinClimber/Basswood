@@ -1,6 +1,7 @@
 import axios from 'axios';
+import clientCredentials from '../client';
 
-const dbUrl = 'https://basswood-b5622-default-rtdb.firebaseio.com';
+const dbUrl = clientCredentials.databaseUrl;
 
 const getBasket = (id) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/basket/${id}.json`)

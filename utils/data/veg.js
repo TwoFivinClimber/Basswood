@@ -1,7 +1,8 @@
 /* eslint-disable object-curly-newline */
 import axios from 'axios';
+import clientCredentials from '../client';
 
-const dbUrl = 'https://basswood-b5622-default-rtdb.firebaseio.com';
+const dbUrl = clientCredentials.databaseUrl;
 
 const getVeggies = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/veg.json`)

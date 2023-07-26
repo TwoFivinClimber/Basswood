@@ -1,6 +1,7 @@
 import axios from 'axios';
+import clientCredentials from '../client';
 
-const dbUrl = 'https://basswood-b5622-default-rtdb.firebaseio.com';
+const dbUrl = clientCredentials.databaseUrl;
 
 const createBasketVeg = (bsktVeg) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/bsktVeg.json`, bsktVeg)
