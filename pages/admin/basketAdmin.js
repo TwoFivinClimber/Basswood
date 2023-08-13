@@ -4,19 +4,23 @@ import {
 } from 'semantic-ui-react';
 import AsyncSelect from 'react-select';
 import { useRouter } from 'next/router';
-import { getVeggies } from '../utils/data/veg';
-import { getCurrentBasket } from '../utils/data/mergedData';
-import BasketVegCard from '../components/BasketVegCard';
-import { createBasketVeg } from '../utils/data/basketVeg';
-import { getBasketHistory, updateBasket } from '../utils/data/basket';
-import BasketHistoryCard from '../components/BasketHistoryCard';
+import authCheck from '../../utils/authCheck';
+import { useAuth } from '../../utils/authContext';
+import { getVeggies } from '../../utils/data/veg';
+import { getCurrentBasket } from '../../utils/data/mergedData';
+import BasketVegCard from '../../components/BasketVegCard';
+import { createBasketVeg } from '../../utils/data/basketVeg';
+import { getBasketHistory, updateBasket } from '../../utils/data/basket';
+import BasketHistoryCard from '../../components/BasketHistoryCard';
+import { signOut } from '../../utils/auth';
 
 const initialState = {
   description: '',
   title: '',
 };
 
-function Admin() {
+function BasketAdmin() {
+  const user = useAuth();
   const router = useRouter();
   const [currentBasket, setCurrentBasket] = useState({});
   const [basketHistory, setBasketHistory] = useState([]);
@@ -25,6 +29,14 @@ function Admin() {
   const filteredVeggies = veggies.filter((veggie) => !currentBasket.veg?.some((s) => s.id === veggie.id));
   const [edit, setEdit] = useState(false);
   const [input, setInput] = useState(initialState);
+
+  const logOut = () => {
+    signOut().then((resp) => {
+      if (resp) {
+        router.push('/admin');
+      }
+    });
+  };
 
   const getTheContent = () => {
     getVeggies().then(setVeggies);
@@ -69,7 +81,17 @@ function Admin() {
 
   useEffect(() => {
     getTheContent();
-  }, []);
+
+    if (user.uid) {
+      authCheck(user.uid, '').then((resp) => {
+        if (!resp) {
+          logOut();
+        }
+      });
+    } else {
+      logOut();
+    }
+  }, [user]);
 
   return (
     <Container fluid>
@@ -140,4 +162,4 @@ function Admin() {
   );
 }
 
-export default Admin;
+export default BasketAdmin;

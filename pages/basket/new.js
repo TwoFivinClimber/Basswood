@@ -7,8 +7,12 @@ import { useRouter } from 'next/router';
 import BasketVegCard from '../../components/BasketVegCard';
 import { getVeggies } from '../../utils/data/veg';
 import { createNewWeekBasket } from '../../utils/data/mergedData';
+import { useAuth } from '../../utils/authContext';
+import authCheck from '../../utils/authCheck';
+import { signOut } from '../../utils/auth';
 
 function NewBasket() {
+  const user = useAuth();
   const router = useRouter();
   const currentDate = new Date();
   const startDate = new Date(currentDate.getFullYear(), 0, 1);
@@ -19,10 +23,18 @@ function NewBasket() {
   const [input, setInput] = useState({});
   const filteredVeggies = veggies.filter((veggie) => !selected.some((s) => s.id === veggie.id));
 
+  const logOut = () => {
+    signOut().then((resp) => {
+      if (resp) {
+        router.push('/admin');
+      }
+    });
+  };
+
   const clearFunc = () => {
     setSelected([]);
     setInput({});
-    router.push('/basketAdmin');
+    router.push('/admin/basketAdmin');
   };
 
   const getTheContent = () => {
@@ -52,12 +64,22 @@ function NewBasket() {
       active: true,
     };
     const vegIdArr = selected.map((veg) => veg.id);
-    createNewWeekBasket(basket, vegIdArr).then(() => router.push('/basketAdmin'));
+    createNewWeekBasket(basket, vegIdArr).then(() => router.push('/admin/basketAdmin'));
   };
 
   useEffect(() => {
     getTheContent();
-  }, []);
+
+    if (user.uid) {
+      authCheck(user.uid, '').then((resp) => {
+        if (!resp) {
+          logOut();
+        }
+      });
+    } else {
+      logOut();
+    }
+  }, [user]);
 
   return (
     <Container fluid>

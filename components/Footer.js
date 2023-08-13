@@ -68,7 +68,7 @@ function Footer() {
           </Grid.Row>
         </Grid>
       </Container>
-      <span style={{ display: 'flex', justifyContent: 'center', padding: '1em' }}>&copy; Baswood Farm All Rights Reserved.</span>
+      <span style={{ display: 'flex', justifyContent: 'center', padding: '1em' }}><strong>&copy; Baswood Farm</strong>&nbsp; All Rights Reserved</span>
     </div>
   );
 }
