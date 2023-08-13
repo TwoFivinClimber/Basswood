@@ -92,7 +92,7 @@ AdminVegModal.propTypes = {
   onUpdate: PropTypes.func.isRequired,
   bsktId: PropTypes.number,
   obj: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     name: PropTypes.string,
     description: PropTypes.string,
     img: PropTypes.string,

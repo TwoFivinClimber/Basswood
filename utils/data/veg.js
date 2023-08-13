@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 import axios from 'axios';
-import clientCredentials from '../client';
+import { clientCredentials } from '../client';
 
 const dbUrl = clientCredentials.databaseUrl;
 
