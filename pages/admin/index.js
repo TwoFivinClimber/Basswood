@@ -4,24 +4,25 @@ import {
 } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { AuthProvider, useAuth } from '../../utils/authContext';
-import { signIn } from '../../utils/auth';
-import authCheck from '../../utils/authCheck';
+import { signIn, signOut } from '../../utils/auth';
+import checkAdmin from '../../utils/data/admin';
 
 function Admin() {
   const user = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (user?.uid) {
-      authCheck(user.uid).then((resp) => {
-        if (resp) {
+    if (user.uid) {
+      checkAdmin().then((resp) => {
+        if (resp.data) {
           router.push('/admin/portal');
         } else {
+          signOut();
           router.push('/');
         }
       });
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <AuthProvider>

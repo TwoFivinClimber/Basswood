@@ -1,35 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import {
   Button, Card, Container, Divider, Header,
 } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { signOut } from '../../utils/auth';
 import { useAuth } from '../../utils/authContext';
-import authCheck from '../../utils/authCheck';
+import checkAdmin from '../../utils/data/admin';
 
 function Portal() {
   const router = useRouter();
   const user = useAuth();
 
-  const logOut = () => {
+  const logOut = useCallback(() => {
     signOut().then((resp) => {
       if (resp) {
         router.push('/admin');
       }
     });
-  };
+  }, [router]);
 
   useEffect(() => {
     if (user.uid) {
-      authCheck(user.uid, '').then((resp) => {
-        if (!resp) {
+      checkAdmin().then((resp) => {
+        if (!resp.data) {
           logOut();
         }
       });
     } else {
       logOut();
     }
-  }, [user]);
+  }, [user, router, logOut]);
 
   return (
     <Container style={{ padding: '4em' }}>

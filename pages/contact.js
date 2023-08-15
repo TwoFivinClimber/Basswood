@@ -23,7 +23,6 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(input);
   };
 
   return (

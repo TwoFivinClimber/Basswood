@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 import axios from 'axios';
-import { clientCredentials } from '../client';
+import { clientCredentials, firebase } from '../client';
 
 const dbUrl = clientCredentials.databaseUrl;
 
@@ -23,20 +23,26 @@ const getBasketVeg = (bsktId) => new Promise((resolve, reject) => {
 });
 
 const updateVeg = (input) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/veg/${input.id}.json`, input)
-    .then(resolve)
-    .catch(reject);
+  const loggedUser = firebase.auth().currentUser;
+  loggedUser.getIdToken().then((data) => {
+    axios.patch(`${dbUrl}/veg/${input.id}.json?auth=${data}`, input)
+      .then(resolve)
+      .catch(reject);
+  });
 });
 
 const createVeg = (input) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/veg.json`, input)
-    .then((response) => {
-      const id = response.data.name;
-      const update = { id };
-      axios.patch(`${dbUrl}/veg/${id}.json`, update)
-        .then(resolve);
-    })
-    .catch((error) => reject(console.warn(error)));
+  const loggedUser = firebase.auth().currentUser;
+  loggedUser.getIdToken().then((data) => {
+    axios.post(`${dbUrl}/veg.json?auth=${data}`, input)
+      .then((response) => {
+        const id = response.data.name;
+        const update = { id };
+        axios.patch(`${dbUrl}/veg/${id}.json?auth=${data}`, update)
+          .then(resolve);
+      })
+      .catch((error) => reject((error)));
+  });
 });
 
 const deleteVeg = (id) => new Promise((resolve, reject) => {

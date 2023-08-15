@@ -6,7 +6,7 @@ import { getVeggies } from '../../utils/data/veg';
 import AdminVegCard from '../../components/AdminVegCard';
 import VegForm from '../../components/AdminVegCard/VegForm';
 import { useAuth } from '../../utils/authContext';
-import authCheck from '../../utils/authCheck';
+import checkAdmin from '../../utils/data/admin';
 import { signOut } from '../../utils/auth';
 
 function VegAdmin() {
@@ -15,14 +15,6 @@ function VegAdmin() {
   const [veggies, setVeggies] = useState([]);
   const [showForm, setShowForm] = useState(false);
 
-  const logOut = () => {
-    signOut().then((resp) => {
-      if (resp) {
-        router.push('/admin');
-      }
-    });
-  };
-
   const getTheContent = () => {
     getVeggies().then(setVeggies);
   };
@@ -30,8 +22,16 @@ function VegAdmin() {
   useEffect(() => {
     getTheContent();
 
+    const logOut = () => {
+      signOut().then((resp) => {
+        if (resp) {
+          router.push('/admin');
+        }
+      });
+    };
+
     if (user.uid) {
-      authCheck(user.uid, '').then((resp) => {
+      checkAdmin(user.uid, '').then((resp) => {
         if (!resp) {
           logOut();
         }
@@ -39,7 +39,7 @@ function VegAdmin() {
     } else {
       logOut();
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <Segment>

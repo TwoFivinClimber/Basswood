@@ -18,7 +18,12 @@ const AuthProvider = (props) => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userLogged) => {
       if (userLogged) {
-        setUser(userLogged);
+        userLogged.getIdToken().then((token) => {
+          setUser({
+            ...userLogged,
+            authToken: token,
+          });
+        });
       } else {
         setUser(false);
       }
