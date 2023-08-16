@@ -7,11 +7,13 @@ import {
 function Redirect() {
   const router = useRouter();
   return (
-    <Container>
-      <Header as="h1" content="Sorry" />
-      <Header as="h1" content="But You DOn't Have Permission to Be Here" />
+    <Container textAlign="center">
+      <br />
+      <Header as="h1" content="Sorry, but you don't have permission to be here" />
+      <Header as="h2" content="Please Navigate Back to the Website" />
       <Image src="/images/goats/goats.jpg" size="huge" centered />
-      <Button content="Back to Home" onClick={() => router.push('/')} />
+      <br />
+      <Button color="orange" content="Back to Home" onClick={() => router.push('/')} />
     </Container>
   );
 }
