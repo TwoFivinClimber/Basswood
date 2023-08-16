@@ -18,7 +18,7 @@ function Admin() {
           router.push('/admin/portal');
         } else {
           signOut();
-          router.push('/');
+          router.push('/admin/redirect');
         }
       });
     }

@@ -8,6 +8,7 @@ import VegForm from '../../components/AdminVegCard/VegForm';
 import { useAuth } from '../../utils/authContext';
 import checkAdmin from '../../utils/data/admin';
 import { signOut } from '../../utils/auth';
+import BackButton from '../../components/BackButton';
 
 function VegAdmin() {
   const user = useAuth();
@@ -24,6 +25,7 @@ function VegAdmin() {
 
     const logOut = () => {
       signOut().then((resp) => {
+        // Safeguard against router firing before logout
         if (resp) {
           router.push('/admin');
         }
@@ -42,16 +44,19 @@ function VegAdmin() {
   }, [user, router]);
 
   return (
-    <Segment>
+    <Segment basic>
       <Header as="h1">
         Manage Veggies
-        <Button onClick={() => setShowForm(!showForm)} positive floated="right">
-          <Icon name="add" />
-          Add Veg
-        </Button>
+        <BackButton />
       </Header>
       <Segment style={{ minHeight: '100vh' }}>
-        <Header content="The Garden" />
+        <Header as="h2">
+          The Garden
+          <Button onClick={() => setShowForm(!showForm)} positive floated="right">
+            <Icon name="add" />
+            Add Veg
+          </Button>
+        </Header>
         <Divider />
         <VegForm onUpdate={getTheContent} obj={{}} showForm={showForm} setShowForm={setShowForm} />
         <Card.Group centered>

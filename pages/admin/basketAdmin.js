@@ -13,6 +13,7 @@ import { getBasketHistory, updateBasket } from '../../utils/data/basket';
 import BasketHistoryCard from '../../components/BasketHistoryCard';
 import { signOut } from '../../utils/auth';
 import checkAdmin from '../../utils/data/admin';
+import BackButton from '../../components/BackButton';
 
 const initialState = {
   description: '',
@@ -99,7 +100,8 @@ function BasketAdmin() {
       <Segment className="admin_section">
         <Header as="h1">
           Manage CSA Baskets
-          <Button positive icon="add" floated="right" content="Create New Basket" onClick={() => router.push('/basket/new')} />
+          <BackButton />
+          <Button positive icon="add" floated="right" content="Create New Basket" onClick={() => router.push('/admin/basket/new')} />
         </Header>
         <Segment>
           <Header as="h2">
