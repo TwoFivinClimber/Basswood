@@ -154,7 +154,7 @@ function BasketAdmin() {
           <br />
           <Card.Group centered>
             {sortedHistory?.map((bskt) => (
-              <BasketHistoryCard key={bskt.id} obj={bskt} />
+              <BasketHistoryCard key={bskt.id} obj={bskt} onUpdate={getTheContent} />
             ))}
           </Card.Group>
         </Segment>

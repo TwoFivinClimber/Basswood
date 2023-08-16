@@ -9,4 +9,9 @@ const signOut = () => new Promise((resolve) => {
   firebase.auth().signOut().then(() => resolve(true)).catch(() => resolve(false));
 });
 
-export { signIn, signOut };
+const getUserToken = () => new Promise((resolve) => {
+  const loggedUser = firebase.auth().currentUser;
+  loggedUser.getIdToken().then((data) => resolve(data));
+});
+
+export { signIn, signOut, getUserToken };

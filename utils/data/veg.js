@@ -1,6 +1,8 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable object-curly-newline */
 import axios from 'axios';
-import { clientCredentials, firebase } from '../client';
+import { clientCredentials } from '../client';
+import { getUserToken } from '../auth';
 
 const dbUrl = clientCredentials.databaseUrl;
 
@@ -16,24 +18,16 @@ const getSingleVeg = (vegId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getBasketVeg = (bsktId) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/bsktVeg.json?orderBy="basket"&equalTo="${bsktId}"`)
-    .then((response) => resolve(Object.values(response.data)))
-    .catch(reject);
-});
-
 const updateVeg = (input) => new Promise((resolve, reject) => {
-  const loggedUser = firebase.auth().currentUser;
-  loggedUser.getIdToken().then((data) => {
+  getUserToken().then((data) => {
     axios.patch(`${dbUrl}/veg/${input.id}.json?auth=${data}`, input)
       .then(resolve)
       .catch(reject);
   });
 });
 
-const createVeg = (input) => new Promise((resolve, reject) => {
-  const loggedUser = firebase.auth().currentUser;
-  loggedUser.getIdToken().then((data) => {
+const createVeg = async (input) => new Promise((resolve, reject) => {
+  getUserToken().then((data) => {
     axios.post(`${dbUrl}/veg.json?auth=${data}`, input)
       .then((response) => {
         const id = response.data.name;
@@ -45,10 +39,13 @@ const createVeg = (input) => new Promise((resolve, reject) => {
   });
 });
 
-const deleteVeg = (id) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/veg/${id}.json`)
-    .then(resolve)
-    .catch(reject);
-});
+const deleteVeg = async (id) => {
+  try {
+    const token = await getUserToken();
+    return axios.delete(`${dbUrl}/veg/${id}.json?auth=${token}`);
+  } catch (error) {
+    throw error;
+  }
+};
 
-export { getVeggies, getSingleVeg, getBasketVeg, createVeg, updateVeg, deleteVeg };
+export { getVeggies, getSingleVeg, createVeg, updateVeg, deleteVeg };

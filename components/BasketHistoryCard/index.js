@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import BasketViewModal from './BasketViewModal';
 import { getBasketById } from '../../utils/data/mergedData';
 
-function BasketHistoryCard({ obj }) {
+function BasketHistoryCard({ obj, onUpdate }) {
   const [basketDetail, setBasketDetail] = useState({});
   const [open, setOpen] = useState(false);
 
@@ -32,12 +32,13 @@ function BasketHistoryCard({ obj }) {
           <Card.Description content={obj.description} />
         </Card.Content>
       </Card>
-      <BasketViewModal obj={basketDetail} open={open} setOpen={setOpen} />
+      <BasketViewModal obj={basketDetail} onUpdate={onUpdate} open={open} setOpen={setOpen} />
     </>
   );
 }
 
 BasketHistoryCard.propTypes = {
+  onUpdate: PropTypes.func.isRequired,
   obj: PropTypes.shape({
     id: PropTypes.string,
     week: PropTypes.number,
