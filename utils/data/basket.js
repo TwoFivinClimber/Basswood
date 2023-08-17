@@ -1,5 +1,7 @@
+/* eslint-disable no-useless-catch */
 import axios from 'axios';
 import { clientCredentials } from '../client';
+import { getUserToken } from '../auth';
 
 const dbUrl = clientCredentials.databaseUrl;
 
@@ -16,19 +18,23 @@ const getBasketHistory = () => new Promise((resolve, reject) => {
 });
 
 const createBasket = (basketObj) => new Promise((resolve, reject) => {
-  axios.post(`${dbUrl}/basket.json`, basketObj)
-    .then((response) => {
-      const id = response.data.name;
-      axios.patch(`${dbUrl}/basket/${id}.json`, { id })
-        .then(() => resolve(id));
-    })
-    .catch(reject);
+  getUserToken().then((data) => {
+    axios.post(`${dbUrl}/basket.json?auth=${data}`, basketObj)
+      .then((response) => {
+        const id = response.data.name;
+        axios.patch(`${dbUrl}/basket/${id}.json?auth=${data}`, { id })
+          .then(() => resolve(id));
+      })
+      .catch(reject);
+  });
 });
 
 const updateBasket = (update) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/basket/${update.id}.json`, update)
-    .then(resolve)
-    .catch(reject);
+  getUserToken().then((data) => {
+    axios.patch(`${dbUrl}/basket/${update.id}.json?auth=${data}`, update)
+      .then(resolve)
+      .catch(reject);
+  });
 });
 
 const getActiveBasket = () => new Promise((resolve, reject) => {
@@ -44,9 +50,11 @@ const getActiveBaskets = () => new Promise((resolve, reject) => {
 });
 
 const disableBasket = (id) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/basket/${id}.json`, { active: false })
-    .then(resolve)
-    .catch(reject);
+  getUserToken().then((data) => {
+    axios.patch(`${dbUrl}/basket/${id}.json?auth=${data}`, { active: false })
+      .then(resolve)
+      .catch(reject);
+  });
 });
 
 const getBasketByWeek = (week) => new Promise((resolve, reject) => {
@@ -55,5 +63,14 @@ const getBasketByWeek = (week) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteBasket = async (id) => {
+  try {
+    const token = await getUserToken();
+    return axios.delete(`${dbUrl}/basket/${id}.json?auth=${token}`);
+  } catch (error) {
+    throw error;
+  }
+};
+
 // eslint-disable-next-line object-curly-newline
-export { getActiveBasket, getBasket, updateBasket, createBasket, getActiveBaskets, disableBasket, getBasketByWeek, getBasketHistory };
+export { getActiveBasket, getBasket, updateBasket, createBasket, getActiveBaskets, disableBasket, getBasketByWeek, getBasketHistory, deleteBasket };

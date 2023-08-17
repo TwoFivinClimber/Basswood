@@ -4,12 +4,13 @@ import {
 } from 'semantic-ui-react';
 import AsyncSelect from 'react-select';
 import { useRouter } from 'next/router';
-import BasketVegCard from '../../components/BasketVegCard';
-import { getVeggies } from '../../utils/data/veg';
-import { createNewWeekBasket } from '../../utils/data/mergedData';
-import { useAuth } from '../../utils/authContext';
-import authCheck from '../../utils/authCheck';
-import { signOut } from '../../utils/auth';
+import BasketVegCard from '../../../components/BasketVegCard';
+import { getVeggies } from '../../../utils/data/veg';
+import { createNewWeekBasket } from '../../../utils/data/mergedData';
+import { useAuth } from '../../../utils/authContext';
+import checkAdmin from '../../../utils/data/admin';
+import { signOut } from '../../../utils/auth';
+import BackButton from '../../../components/BackButton';
 
 function NewBasket() {
   const user = useAuth();
@@ -22,14 +23,6 @@ function NewBasket() {
   const [selected, setSelected] = useState([]);
   const [input, setInput] = useState({});
   const filteredVeggies = veggies.filter((veggie) => !selected.some((s) => s.id === veggie.id));
-
-  const logOut = () => {
-    signOut().then((resp) => {
-      if (resp) {
-        router.push('/admin');
-      }
-    });
-  };
 
   const clearFunc = () => {
     setSelected([]);
@@ -69,23 +62,32 @@ function NewBasket() {
 
   useEffect(() => {
     getTheContent();
+    const logOut = () => {
+      signOut().then((resp) => {
+        if (resp) {
+          router.push('/admin');
+        }
+      });
+    };
 
     if (user.uid) {
-      authCheck(user.uid, '').then((resp) => {
-        if (!resp) {
+      checkAdmin().then((resp) => {
+        if (!resp.data) {
           logOut();
         }
       });
     } else {
       logOut();
+      router.push('/');
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <Container fluid>
       <Segment className="admin_section">
         <Header as="h1">
           Create New Basket
+          <BackButton />
         </Header>
         <Form onSubmit={handleSubmit}>
           <Header>{`Week ${weekNumber}`}</Header>

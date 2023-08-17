@@ -4,7 +4,6 @@ import {
 } from 'semantic-ui-react';
 import AsyncSelect from 'react-select';
 import { useRouter } from 'next/router';
-import authCheck from '../../utils/authCheck';
 import { useAuth } from '../../utils/authContext';
 import { getVeggies } from '../../utils/data/veg';
 import { getCurrentBasket } from '../../utils/data/mergedData';
@@ -13,6 +12,8 @@ import { createBasketVeg } from '../../utils/data/basketVeg';
 import { getBasketHistory, updateBasket } from '../../utils/data/basket';
 import BasketHistoryCard from '../../components/BasketHistoryCard';
 import { signOut } from '../../utils/auth';
+import checkAdmin from '../../utils/data/admin';
+import BackButton from '../../components/BackButton';
 
 const initialState = {
   description: '',
@@ -29,14 +30,6 @@ function BasketAdmin() {
   const filteredVeggies = veggies.filter((veggie) => !currentBasket.veg?.some((s) => s.id === veggie.id));
   const [edit, setEdit] = useState(false);
   const [input, setInput] = useState(initialState);
-
-  const logOut = () => {
-    signOut().then((resp) => {
-      if (resp) {
-        router.push('/admin');
-      }
-    });
-  };
 
   const getTheContent = () => {
     getVeggies().then(setVeggies);
@@ -81,24 +74,34 @@ function BasketAdmin() {
 
   useEffect(() => {
     getTheContent();
+    const logOut = () => {
+      signOut().then((resp) => {
+        if (resp) {
+          router.push('/admin');
+        }
+      });
+    };
 
     if (user.uid) {
-      authCheck(user.uid, '').then((resp) => {
-        if (!resp) {
+      checkAdmin().then((resp) => {
+        if (!resp.data) {
+          router.push('/');
           logOut();
         }
       });
     } else {
       logOut();
+      router.push('/');
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <Container fluid>
       <Segment className="admin_section">
         <Header as="h1">
           Manage CSA Baskets
-          <Button positive icon="add" floated="right" content="Create New Basket" onClick={() => router.push('/basket/new')} />
+          <BackButton />
+          <Button positive icon="add" floated="right" content="Create New Basket" onClick={() => router.push('/admin/basket/new')} />
         </Header>
         <Segment>
           <Header as="h2">
@@ -153,7 +156,7 @@ function BasketAdmin() {
           <br />
           <Card.Group centered>
             {sortedHistory?.map((bskt) => (
-              <BasketHistoryCard key={bskt.id} obj={bskt} />
+              <BasketHistoryCard key={bskt.id} obj={bskt} onUpdate={getTheContent} />
             ))}
           </Card.Group>
         </Segment>

@@ -14,7 +14,6 @@ const initialState = {
 
 function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   const [input, setInput] = useState(initialState);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInput((prevState) => ({
@@ -30,6 +29,7 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
       setEdit(!edit);
     } else {
       createVeg(input).then(() => onUpdate());
+      setInput(initialState);
     }
   };
 
