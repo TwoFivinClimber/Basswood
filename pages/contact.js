@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import {
-  Grid, Image, Header, Form, Container, Button, Divider,
+  Grid, Image, Header, Form, Container, Button, Divider, Segment,
 } from 'semantic-ui-react';
+import sendContactEmail from '../utils/data/brevo';
+import { clientCredentials } from '../utils/client';
+
+const { adminEmail } = clientCredentials;
 
 const initialState = {
   name: '',
@@ -12,6 +16,7 @@ const initialState = {
 
 function Contact() {
   const [input, setInput] = useState(initialState);
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,6 +28,25 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const payload = {
+      sender: {
+        name: input.name,
+        email: input.email,
+      },
+      to: [
+        {
+          email: adminEmail,
+          name: 'Brett Hughes',
+        },
+      ],
+      subject: input.subject,
+      htmlContent: `<html><head></head><body><p>${input.message.replace(/\n/g, '<br>')}</p></body></html>`,
+    };
+    sendContactEmail(payload).then((resp) => {
+      if (resp.ok) {
+        setEmailSent(true);
+      }
+    });
   };
 
   return (
@@ -42,7 +66,7 @@ function Contact() {
       <br />
       <br />
       <Container style={{ width: '90%' }}>
-        <Form onSubmit={handleSubmit}>
+        <Form hidden={emailSent} onSubmit={handleSubmit}>
           <Header as="h3" content="Send us a Message" />
           <Form.Group widths="equal">
             <Form.Input name="name" value={input.name} onChange={handleChange} fluid label="Name" placeholder="Name" required />
@@ -52,6 +76,11 @@ function Contact() {
           <Form.TextArea name="message" value={input.message} onChange={handleChange} fluid label="Message" placeHolder="Message" required />
           <Button style={{ backgroundColor: 'forestgreen' }} size="large" content="Send" />
         </Form>
+        <Segment textAlign="center" hidden={!emailSent} style={{ marginLeft: 'auto', marginRight: 'auto', backgroundColor: 'transparent' }}>
+          <Header as="h1" content="Thank You" />
+          <Header as="h3" content="Your Message has Been Sent!" />
+          <Header as="h3" content="We will get back to you shortly" />
+        </Segment>
       </Container>
     </Container>
   );

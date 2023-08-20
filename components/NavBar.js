@@ -10,6 +10,7 @@ function Navbar() {
       size="huge"
       attached="top"
       borderless
+      style={{ backgroundColor: '#ede7de' }}
     >
       <Link href="/" passHref>
         <Menu.Item header style={{ fontSize: '2em', padding: '.2em' }}>

@@ -67,7 +67,7 @@ const generateMenuConfig = (dest) => {
     return select;
   }
   if (dest === 'dropdown') {
-    return menuConfig.slice(3, 6);
+    return menuConfig.slice(3, 5);
   }
   if (dest === 'foot3') {
     return [8, 10].map((x) => menuConfig[x]);

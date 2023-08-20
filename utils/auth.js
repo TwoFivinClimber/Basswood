@@ -9,9 +9,9 @@ const signOut = () => new Promise((resolve) => {
   firebase.auth().signOut().then(() => resolve(true)).catch(() => resolve(false));
 });
 
-const getUserToken = () => new Promise((resolve) => {
-  const loggedUser = firebase.auth().currentUser;
-  loggedUser.getIdToken().then((data) => resolve(data));
-});
+const getUserToken = async () => {
+  const loggedUser = await firebase.auth().currentUser;
+  return loggedUser.getIdToken();
+};
 
 export { signIn, signOut, getUserToken };

@@ -9,6 +9,8 @@ const clientCredentials = {
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  brevoKey: process.env.NEXT_PUBLIC_BREVO_API_KEY,
+  adminEmail: process.env.NEXT_PUBLIC_BASSWOOD_EMAIL,
 };
 
 if (!firebase.apps.length) {
