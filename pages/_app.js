@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import 'semantic-ui-css/semantic.min.css';
 import '../styles/globals.css';
+import Script from 'next/script';
 import Navbar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { AuthProvider } from '../utils/authContext';
@@ -10,6 +11,7 @@ export default function App({ Component, pageProps }) {
     <AuthProvider>
       <Navbar />
       <Component {...pageProps} />
+      <Script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer />
       <Footer />
     </AuthProvider>
   );

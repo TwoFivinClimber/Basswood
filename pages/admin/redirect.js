@@ -11,7 +11,7 @@ function Redirect() {
       <br />
       <Header as="h1" content="Sorry, but you don't have permission to be here" />
       <Header as="h2" content="Please Navigate Back to the Website" />
-      <Image src="/images/goats/goats.jpg" size="huge" centered />
+      <Image src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624718/basswood/general%20website%20images/goats_qqpvzo.jpg" size="huge" centered />
       <br />
       <Button color="orange" content="Back to Home" onClick={() => router.push('/')} />
     </Container>

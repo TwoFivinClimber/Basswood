@@ -29,7 +29,7 @@ function Admin() {
       <Container textAlign="center">
         <br />
         <Header as="h1" style={{ fontSize: '3em' }} content="Are You Supposed To Be Here?" />
-        <Image src="/images/goats/goats.jpg" size="huge" centered />
+        <Image src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624718/basswood/general%20website%20images/goats_qqpvzo.jpg" size="huge" centered />
         <Header as="h2" content="Sign In To Find Out" />
         <Button positive size="big" content="Sign In" onClick={() => signIn()} />
       </Container>

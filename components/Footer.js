@@ -18,7 +18,7 @@ function Footer() {
           <Grid.Row>
             <Grid.Column width={6}>
               <Menu.Item style={{ display: 'flex' }} header as="h3">
-                <Image style={{ marginRight: '1em' }} src="/images/logo.png" size="mini" />
+                <Image style={{ marginRight: '1em' }} src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624712/basswood/general%20website%20images/logo_b6nmjh.png" size="mini" />
                 <Link passHref href="/basswood">
                   Basswood Farm
                 </Link>

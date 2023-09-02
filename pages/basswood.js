@@ -9,8 +9,6 @@ function basswood() {
   return (
     <Container style={{ padding: '4em' }}>
       <Header as="h1">Basswood Farm</Header>
-      {/* OPTIONAL IMAGE FOR TOP OF PAGE */}
-      {/* <Image centered style={{ height: '16em', objectFit: 'cover' }} size="huge" src="/images/basswood-head.jpg" /> */}
       <p style={{ fontSize: '18px' }}>
         {basswoodCopy.overview}
       </p>

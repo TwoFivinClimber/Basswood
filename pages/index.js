@@ -3,12 +3,13 @@ import {
   Segment, Header, Container, Grid, Button, Image, Divider,
 } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
+
 import home from '../utils/data/copy/home';
 
 export default function Home() {
   const router = useRouter();
   return (
-    <div>
+    <Container fluid>
       <Header className="welcome-header" as="h1" textAlign="center" content="Welcome to Basswood Farm" />
       <Container
         style={{
@@ -37,7 +38,7 @@ export default function Home() {
             />
             <Link href="/basswood" passHref>
               <Image
-                src="/images/stable.jpg"
+                src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624719/basswood/general%20website%20images/stable_cjzd4d.jpg"
               />
             </Link>
           </Grid.Column>
@@ -60,7 +61,7 @@ export default function Home() {
             />
             <Link href="/woodhouse" passHref>
               <Image
-                src="/images/woodhouse.jpg"
+                src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624720/basswood/general%20website%20images/woodhouse_hpxcrr.jpg"
               />
             </Link>
           </Grid.Column>
@@ -84,7 +85,8 @@ export default function Home() {
           </Grid.Column>
         </Grid>
       </Segment>
-      <Header as="h1" style={{ textAlign: 'center' }} content="Instagram Goes Here" />
-    </div>
+      <Header as="h1" style={{ textAlign: 'center' }} content="Follow us on Instagram" />
+      <div className="elfsight-app-75027bd3-9acf-43e4-9c95-d77b42332919" />
+    </Container>
   );
 }

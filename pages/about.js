@@ -9,7 +9,7 @@ function About() {
     <Container className="about" style={{ paddingBottom: '6em' }}>
       <Grid style={{ padding: '6em' }} textAlign="center" verticalAlig="middle" columns="2">
         <Grid.Column style={{ display: 'flex', justifyContent: 'center' }}>
-          <Image size="medium" rounded src="/images/goat.jpg" />
+          <Image size="medium" rounded src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624714/basswood/general%20website%20images/goat_a6ag3x.jpg" />
         </Grid.Column>
         <Grid.Column textAlign="center" verticalAlign="middle">
           <Header as="h1" style={{ fontSize: '4em' }} content="About Basswood" />
