@@ -14,7 +14,7 @@ function Navbar() {
     >
       <Link href="/" passHref>
         <Menu.Item header style={{ fontSize: '2em', padding: '.2em' }}>
-          <Image style={{ marginRight: '1em' }} src="/images/logo.png" size="tiny" />
+          <Image style={{ marginRight: '1em' }} src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624712/basswood/general%20website%20images/logo_b6nmjh.png" size="tiny" />
           Basswood Farm
         </Menu.Item>
       </Link>

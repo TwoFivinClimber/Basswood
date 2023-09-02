@@ -1,27 +1,27 @@
 const boardingImages = [
   {
-    original: '/images/boarding/prettyPasture.jpg',
-    thumbnail: '/images/boarding/prettyPasture.jpg',
+    original: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623436/basswood/general%20website%20images/boarding/prettyPasture_yfve0o.jpg',
+    thumbnail: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623436/basswood/general%20website%20images/boarding/prettyPasture_yfve0o.jpg',
   },
   {
-    original: '/images/boarding/barn.jpg',
-    thumbnail: '/images/boarding/barn.jpg',
+    original: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623437/basswood/general%20website%20images/boarding/barn_jslen8.jpg',
+    thumbnail: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623437/basswood/general%20website%20images/boarding/barn_jslen8.jpg',
   },
   {
-    original: '/images/boarding/horses.jpg',
-    thumbnail: '/images/boarding/horses.jpg',
+    original: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623436/basswood/general%20website%20images/boarding/horses_vwabxa.jpg',
+    thumbnail: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623436/basswood/general%20website%20images/boarding/horses_vwabxa.jpg',
   },
   {
-    original: '/images/boarding/hayFeed.jpg',
-    thumbnail: '/images/boarding/hayFeed.jpg',
+    original: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623435/basswood/general%20website%20images/boarding/hayFeed_j2ja0j.jpg',
+    thumbnail: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623435/basswood/general%20website%20images/boarding/hayFeed_j2ja0j.jpg',
   },
   {
-    original: '/images/boarding/pasture.jpg',
-    thumbnail: '/images/boarding/pasture.jpg',
+    original: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623436/basswood/general%20website%20images/boarding/pasture_vng06d.jpg',
+    thumbnail: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623436/basswood/general%20website%20images/boarding/pasture_vng06d.jpg',
   },
   {
-    original: '/images/boarding/blinderHorse.jpg',
-    thumbnail: '/images/boarding/blinderHorse.jpg',
+    original: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623436/basswood/general%20website%20images/boarding/blinderHorse_mfzgif.jpg',
+    thumbnail: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693623436/basswood/general%20website%20images/boarding/blinderHorse_mfzgif.jpg',
   },
 ];
 

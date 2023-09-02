@@ -39,14 +39,3 @@ a {
   justify-content: center;
   align-items: center;
 }
-
-/*Info Card*/
-.infoCard{
-  display: flex!important;
-}
-
-/*Admin*/
-
-.admin_section{
-  margin: 2em!important;
-}

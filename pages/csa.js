@@ -12,7 +12,7 @@ function csa() {
       <br />
       <Header as="h1" style={{ fontSize: '4em' }} textAlign="center" content="Crop Share Agreement" />
       <br />
-      <Image size="huge" centered src="/images/csa.jpg" />
+      <Image size="huge" centered src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624721/basswood/general%20website%20images/csa_x7jepx.jpg" />
       <br />
       <Header as="h1" textAlign="center" content="What is a CSA" />
       <br />

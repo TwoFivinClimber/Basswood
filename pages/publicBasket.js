@@ -24,7 +24,7 @@ function PublicBasket() {
       <Header as="h1" style={{ fontSize: '3.5em' }} textAlign="center" content="This Weeks Basket" />
       <Header as="h1" textAlign="center" content={`"${basket?.title || ''}"`} />
       <Divider />
-      <Image size="huge" centered src="/images/basket.jpg" />
+      <Image size="huge" centered src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624713/basswood/general%20website%20images/basket_bxa9d7.jpg" />
       <br />
       <Header as="h2" content={`Week: ${basket.week}`} />
       <p style={{ fontSize: '1.5em' }}>{basket.description}</p>
