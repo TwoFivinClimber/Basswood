@@ -58,7 +58,7 @@ function Footer() {
             <Grid.Column width={3}>
               <Menu.Item header as="h3">
                 <Link passHref href="/contact">
-                  Connect With Us
+                  Connect
                 </Link>
               </Menu.Item>
               {generateMenuConfig('foot5')?.map((i) => (

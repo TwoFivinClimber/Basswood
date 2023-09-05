@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button, Card, Container, Form, Header, Segment,
+  Button, Card, Container, Form, Grid, Header, Image, Segment,
 } from 'semantic-ui-react';
 import AsyncSelect from 'react-select';
 import { useRouter } from 'next/router';
@@ -18,6 +18,7 @@ import BackButton from '../../components/BackButton';
 const initialState = {
   description: '',
   title: '',
+  photo: '',
 };
 
 function BasketAdmin() {
@@ -57,6 +58,7 @@ function BasketAdmin() {
     setInput({
       description: currentBasket.description,
       title: currentBasket.title,
+      photo: currentBasket.photo,
     });
     setEdit(!edit);
   };
@@ -112,17 +114,23 @@ function BasketAdmin() {
           <Segment>
             <Form onSubmit={handleSubmit}>
               {edit ? (
-                <Form.Input label="Basket Title" name="title" onChange={handleChange} value={input.title} />
-              ) : (
                 <>
-                  <Header style={{ display: 'inline-block', marginRight: '1rem' }}>{currentBasket.title}</Header>
-                  <span>{`Week ${currentBasket.week}`}</span>
+                  <Form.Input label="Basket Title" name="title" onChange={handleChange} value={input.title} />
+                  <Form.Input label="Basket Photo" name="photo" onChange={handleChange} value={input.photo} />
+                  <Form.TextArea label="Basket Description" name="description" onChange={handleChange} value={input.description} />
                 </>
-              )}
-              {edit ? (
-                <Form.TextArea label="Basket Description" name="description" onChange={handleChange} value={input.description} />
               ) : (
-                <p>{currentBasket.description}</p>
+                <Grid columns={2}>
+                  <Grid.Column>
+                    <Header as="h2" style={{ display: 'inline-block', marginRight: '1rem' }} content={currentBasket.title} />
+                    <span>{`Week ${currentBasket.week}`}</span>
+                    <Header as="h4" content={currentBasket.description} />
+                  </Grid.Column>
+                  <Grid.Column textAlign="center">
+                    <Header content="Basket Photo" />
+                    <Image centered size="medium" src={currentBasket.photo} />
+                  </Grid.Column>
+                </Grid>
               )}
               <Form.Field hidden={!edit}>
                 <label htmlFor="veggieSelect">Select Veggies</label>
@@ -136,6 +144,14 @@ function BasketAdmin() {
                 />
               </Form.Field>
               <br />
+              {edit ? (
+                <Container>
+                  <Header textAlign="center" content="Basket Photo" />
+                  <Image size="medium" centered src={input.photo} alt="Photo link is not working, try another image" />
+                </Container>
+              ) : ('')}
+              <br />
+              <Header textAlign="center" content="Veggies" />
               <Card.Group centered>
                 {currentBasket.veg?.map((veg) => (
                   <BasketVegCard key={veg.id} bsktId={currentBasket.id} obj={veg} onUpdate={getTheContent} />

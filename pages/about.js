@@ -6,25 +6,22 @@ import about from '../utils/data/copy/about';
 
 function About() {
   return (
-    <Container className="about" style={{ paddingBottom: '6em' }}>
-      <Grid style={{ padding: '6em' }} textAlign="center" verticalAlig="middle" columns="2">
+    <Container style={{ paddingBottom: '6em' }}>
+      <Grid className="about" stackable style={{ padding: '6em' }} textAlign="center" verticalAlig="middle" columns="2">
         <Grid.Column style={{ display: 'flex', justifyContent: 'center' }}>
-          <Image size="medium" rounded src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624714/basswood/general%20website%20images/goat_a6ag3x.jpg" />
+          <Image size="huge" rounded src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624721/basswood/general%20website%20images/hip-camp_jg0at5.jpg" />
         </Grid.Column>
         <Grid.Column textAlign="center" verticalAlign="middle">
-          <Header as="h1" style={{ fontSize: '4em' }} content="About Basswood" />
+          <Header as="h1" style={{ fontSize: '4em' }} content="About Us" />
         </Grid.Column>
       </Grid>
       <Container>
-        <Header content={about.header} />
+        <Header as="h1" content={about.header} />
         <p style={{ fontSize: '18px' }}>
-          {about.general}
+          {`${about.general} ${about.location} ${about.horses}`}
         </p>
         <p style={{ fontSize: '18px' }}>
-          {about.horses}
-        </p>
-        <p style={{ fontSize: '18px' }}>
-          {about.barn}
+          {about.woodhouse}
         </p>
         <p style={{ fontSize: '18px' }}>
           {about.brenda}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button, Card, Container, Form, Header, Segment,
+  Button, Card, Container, Form, Header, Image, Segment,
 } from 'semantic-ui-react';
 import AsyncSelect from 'react-select';
 import { useRouter } from 'next/router';
@@ -92,6 +92,7 @@ function NewBasket() {
         <Form onSubmit={handleSubmit}>
           <Header>{`Week ${weekNumber}`}</Header>
           <Form.Input required label="Basket Title" name="title" onChange={handleChange} value={input.title} />
+          <Form.Input required label="Basket Photo" name="photo" onChange={handleChange} value={input.photo} />
           <Form.TextArea required label="Basket Description" name="description" onChange={handleChange} value={input.description} />
           <Form.Field>
             <label htmlFor="veggieSelect">Select Crop</label>
@@ -106,6 +107,13 @@ function NewBasket() {
               value=""
             />
           </Form.Field>
+          <br />
+          {input.photo ? (
+            <>
+              <Header textAlign="center" content="The Basket" />
+              <Image size="medium" centered src={input.photo} alt="Photo link is not working, try another image" />
+            </>
+          ) : ('')}
           <br />
           <Card.Group centered>
             { selected.length ? selected.map((veg) => (

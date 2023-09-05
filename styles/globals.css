@@ -2,14 +2,17 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
   background: linear-gradient(#ede7de, #f2dbc5);
   background-attachment: fixed;
+  min-height: 100%!important;
+  min-width: 100vw;
 }
 
 #__next{
   min-height: 100vh;
+  min-width: 100%!important;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 a {
@@ -18,7 +21,9 @@ a {
 }
 
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box!important;
 }
 
 /* NAV */
@@ -30,8 +35,7 @@ a {
 
 /*Index*/
 .welcome-header{
-  padding-top: 5rem!important;
-  font-size: 5em!important;
+  
 }
 
 .discover-cards{
@@ -39,3 +43,34 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+@media all and (max-width: 500px) {
+  
+  * {
+    font-size: .75rem;
+  }
+  /* Nav */
+  .navButtons {
+    display: none!important;
+  }
+  .navDropDown{
+    display: flex;
+    justify-content: center;
+    width: 4rem;
+  }
+  /* Index */
+  .growingButton{
+    width: 100px;
+    height: auto;
+    font-size: 12px!important;
+  }
+  /* Basswood & Woodhouse Pages*/
+  .infoCard{
+    flex-direction: column!important;
+  }
+
+  /* About */
+  .about {
+    flex-direction: column-reverse!important;
+  }
+} 

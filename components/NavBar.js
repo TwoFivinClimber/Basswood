@@ -10,6 +10,7 @@ function Navbar() {
       size="huge"
       attached="top"
       borderless
+      fluid
       style={{ backgroundColor: '#ede7de' }}
     >
       <Link href="/" passHref>
@@ -18,12 +19,11 @@ function Navbar() {
           Basswood Farm
         </Menu.Item>
       </Link>
-
       <Menu.Menu className="nav-menu" position="right">
         {generateMenuConfig('nav')?.map((i) => (
-          <MenuLink href={i.href} name={i.name} />
+          <MenuLink tag="navButtons" key={i.name} href={i.href} name={i.name} />
         ))}
-        <Dropdown item labeled icon="angle double down">
+        <Dropdown item className="navDropDown" labeled icon="sliders horizontal">
           <Dropdown.Menu>
             {generateMenuConfig('dropdown')?.map((i) => (
               <MenuLink href={i.href} name={i.name} />
