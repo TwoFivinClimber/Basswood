@@ -73,4 +73,12 @@ a {
   .about {
     flex-direction: column-reverse!important;
   }
+  /* Basket Admin */
+
+  .respButton {
+    width: 110px;
+    height: 30px;
+    font-size: .8rem!important;
+    }
+
 } 

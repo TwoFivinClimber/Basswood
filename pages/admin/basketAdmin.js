@@ -99,83 +99,89 @@ function BasketAdmin() {
 
   return (
     <Container fluid>
-      <Segment className="admin_section">
-        <Header as="h1">
-          Manage CSA Baskets
+      <Header
+        className="basketAdminHeader"
+        style={{
+          fontSize: '3em', margin: '.5em', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        }}
+      >
+        Basket Admin
+        <div>
           <BackButton />
-          <Button positive icon="add" floated="right" content="Create New Basket" onClick={() => router.push('/admin/basket/new')} />
+          <br />
+          <Button className="respButton" positive icon="add" floated="right" content="New Basket" onClick={() => router.push('/admin/basket/new')} />
+        </div>
+      </Header>
+      <Segment>
+        <Header style={{ fontSize: '1.75em' }}>
+          Active Basket
+          <Button floated="right" icon={edit ? 'close' : 'write'} color="orange" onClick={() => editInit()} content={edit ? 'Close' : 'Edit'} />
         </Header>
+        <br />
         <Segment>
-          <Header as="h2">
-            Active Basket
-            <Button floated="right" icon={edit ? 'close' : 'write'} color="orange" onClick={() => editInit()} content={edit ? 'Close' : 'Edit'} />
-          </Header>
-          <br />
-          <Segment>
-            <Form onSubmit={handleSubmit}>
-              {edit ? (
-                <>
-                  <Form.Input label="Basket Title" name="title" onChange={handleChange} value={input.title} />
-                  <Form.Input label="Basket Photo" name="photo" onChange={handleChange} value={input.photo} />
-                  <Form.TextArea label="Basket Description" name="description" onChange={handleChange} value={input.description} />
-                </>
-              ) : (
-                <Grid columns={2}>
-                  <Grid.Column>
-                    <Header as="h2" style={{ display: 'inline-block', marginRight: '1rem' }} content={currentBasket.title} />
-                    <span>{`Week ${currentBasket.week}`}</span>
-                    <Header as="h4" content={currentBasket.description} />
-                  </Grid.Column>
-                  <Grid.Column textAlign="center">
-                    <Header content="Basket Photo" />
-                    <Image centered size="medium" src={currentBasket.photo} />
-                  </Grid.Column>
-                </Grid>
-              )}
-              <Form.Field hidden={!edit}>
-                <label htmlFor="veggieSelect">Select Veggies</label>
-                <AsyncSelect
-                  id="veggiesSelect"
-                  options={filteredVeggies}
-                  getOptionValue={(i) => i.id}
-                  getOptionLabel={(i) => i.name}
-                  onChange={writeBasketVeg}
-                  value=""
-                />
-              </Form.Field>
-              <br />
-              {edit ? (
-                <Container>
-                  <Header textAlign="center" content="Basket Photo" />
-                  <Image size="medium" centered src={input.photo} alt="Photo link is not working, try another image" />
-                </Container>
-              ) : ('')}
-              <br />
-              <Header textAlign="center" content="Veggies" />
-              <Card.Group centered>
-                {currentBasket.veg?.map((veg) => (
-                  <BasketVegCard key={veg.id} bsktId={currentBasket.id} obj={veg} onUpdate={getTheContent} />
-                ))}
-              </Card.Group>
-              <br />
-              {edit ? (
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <Button disabled={!input.description} size="large" type="submit" positive content="Publish" />
-                  <Button size="large" type="button" onClick={() => setEdit(!edit)} negative content="Cancel" />
-                </div>
-              ) : '' }
-            </Form>
-          </Segment>
+          <Form onSubmit={handleSubmit}>
+            {edit ? (
+              <>
+                <Form.Input label="Basket Title" name="title" onChange={handleChange} value={input.title} />
+                <Form.Input label="Basket Photo" name="photo" onChange={handleChange} value={input.photo} />
+                <Form.TextArea label="Basket Description" name="description" onChange={handleChange} value={input.description} />
+              </>
+            ) : (
+              <Grid columns={2}>
+                <Grid.Column>
+                  <Header style={{ fontSize: '1.75em', display: 'inline-block', marginRight: '1rem' }} content={currentBasket.title} />
+                  <span>{`Week ${currentBasket.week}`}</span>
+                  <Header as="h4" content={currentBasket.description} />
+                </Grid.Column>
+                <Grid.Column textAlign="center">
+                  <Header content="Basket Photo" />
+                  <Image centered size="medium" src={currentBasket.photo} />
+                </Grid.Column>
+              </Grid>
+            )}
+            <Form.Field hidden={!edit}>
+              <label htmlFor="veggieSelect">Select Veggies</label>
+              <AsyncSelect
+                id="veggiesSelect"
+                options={filteredVeggies}
+                getOptionValue={(i) => i.id}
+                getOptionLabel={(i) => i.name}
+                onChange={writeBasketVeg}
+                value=""
+              />
+            </Form.Field>
+            <br />
+            {edit ? (
+              <Container>
+                <Header textAlign="center" content="Basket Photo" />
+                <Image size="medium" centered src={input.photo} alt="Photo link is not working, try another image" />
+              </Container>
+            ) : ('')}
+            <br />
+            <Header textAlign="center" content="Veggies" />
+            <Card.Group centered>
+              {currentBasket.veg?.map((veg) => (
+                <BasketVegCard key={veg.id} bsktId={currentBasket.id} obj={veg} onUpdate={getTheContent} />
+              ))}
+            </Card.Group>
+            <br />
+            {edit ? (
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <Button disabled={!input.description} size="large" type="submit" positive content="Publish" />
+                <Button size="large" type="button" onClick={() => setEdit(!edit)} negative content="Cancel" />
+              </div>
+            ) : '' }
+          </Form>
         </Segment>
-        <Segment>
-          <Header as="h3" content="Basket History" />
-          <br />
-          <Card.Group centered>
-            {sortedHistory?.map((bskt) => (
-              <BasketHistoryCard key={bskt.id} obj={bskt} onUpdate={getTheContent} />
-            ))}
-          </Card.Group>
-        </Segment>
+      </Segment>
+      <Segment>
+        <Header as="h3" content="Basket History" />
+        <br />
+        <Card.Group centered>
+          {sortedHistory?.map((bskt) => (
+            <BasketHistoryCard key={bskt.id} obj={bskt} onUpdate={getTheContent} />
+          ))}
+        </Card.Group>
       </Segment>
     </Container>
   );
