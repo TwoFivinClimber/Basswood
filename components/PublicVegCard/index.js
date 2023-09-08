@@ -13,7 +13,12 @@ function PublicVegCard({ obj }) {
         onClick={() => setOpen(!open)}
         raised
         style={{
-          display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '40%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '40%',
+          backgroundColor: '#a7c28b40',
         }}
       >
         <div className="vegCardImgDiv">

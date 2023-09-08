@@ -2,7 +2,8 @@
 
 html,
 body {
-  background: linear-gradient(#ede7de, #f2dbc5);
+  /* background: linear-gradient(#ede7de, #f2dbc5); */
+  background-color: #f0e6db;
   background-attachment: fixed;
   min-height: 100%!important;
   min-width: 100vw;
@@ -34,6 +35,9 @@ a {
 }
 /* Foter */
 
+.footer{
+  background-color: #638d1266!important
+}
 .footHeader {
   display: flex;
   justify-content: center;
@@ -46,6 +50,12 @@ a {
   display: flex!important;
   justify-content: center;
   align-items: center;
+}
+
+/* Info Card */
+
+.infoCard {
+  background-color: #a7c28b40!important;
 }
 /* Veg Card */
 

@@ -11,7 +11,8 @@ function Navbar() {
       attached="top"
       borderless
       fluid
-      style={{ backgroundColor: '#ede7de' }}
+      // style={{ backgroundColor: '#ede7de' }}
+      style={{ backgroundColor: '#638d1266', border: '1px  solid #545640', margin: 0 }}
     >
       <Link href="/" passHref>
         <Menu.Item header style={{ fontSize: '2em', padding: '.2em' }}>

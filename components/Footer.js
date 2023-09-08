@@ -8,7 +8,7 @@ import MenuLink from './MenuLink';
 
 function Footer() {
   return (
-    <div>
+    <div className="footer ">
       <Divider horizontal content="Basswood" />
       <Container>
         <Grid columns="3" padded="vertically">
