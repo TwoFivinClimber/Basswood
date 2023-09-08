@@ -33,12 +33,12 @@ function Boarding() {
       <Header as="h1" textAlign="center" content="What We Offer" />
       <br />
       <p style={{ fontSize: '1.5em' }}>{boardingCopy.offer}</p>
-      <br />
-      <Header as="h1" textAlign="center" content="Interested In Boarding With Us ?" />
+      <Header as="h1" textAlign="center" content="Interested In Boarding ?" />
       <Header as="h3" textAlign="center">
         Get In Touch
         <Button style={{ marginLeft: '1em' }} onClick={(() => router.push('/contact'))} color="orange" content="Here" />
       </Header>
+      <br />
     </Container>
   );
 }

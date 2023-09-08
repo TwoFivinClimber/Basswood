@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { signOut } from '../../utils/auth';
 import { useAuth } from '../../utils/authContext';
 import checkAdmin from '../../utils/data/admin';
-import AdminPortalCard from '../../components/adminPortalCard';
+import PortalCard from '../../components/AdminPortalCard';
 
 function Portal() {
   const router = useRouter();
@@ -42,9 +42,9 @@ function Portal() {
       <Divider />
       <br />
       <Card.Group style={{ height: '100%' }}>
-        <AdminPortalCard title="Basket Admin" content="View, Modify, or Create  Baskets" route="/admin/basketAdmin" label="To Basket Admin" />
-        <AdminPortalCard title="Veg Admin" content="Add or Modify Veggies" label="To Veg Admin" route="/admin/vegAdmin" />
-        <AdminPortalCard title="Product Admin" content="Add or Modify Products and Avaliability" label="To Product Admin" route="/admin/productAdmin" />
+        <PortalCard title="Basket Admin" content="View, Modify, or Create  Baskets" route="/admin/basketAdmin" label="To Basket Admin" />
+        <PortalCard title="Veg Admin" content="Add or Modify Veggies" label="To Veg Admin" route="/admin/vegAdmin" />
+        <PortalCard title="Product Admin" content="Add or Modify Products and Avaliability" label="To Product Admin" route="/admin/productAdmin" />
       </Card.Group>
     </Container>
   );

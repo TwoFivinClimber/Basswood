@@ -105,5 +105,6 @@ export default function Home() {
       <Header as="h1" style={{ textAlign: 'center' }} content="Follow us on Instagram" />
       <div className="elfsight-app-75027bd3-9acf-43e4-9c95-d77b42332919" />
     </Container>
+
   );
 }

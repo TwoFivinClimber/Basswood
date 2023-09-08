@@ -26,7 +26,7 @@ function PublicBasket() {
       <Divider />
       <Image size="huge" centered src={basket.photo} />
       <br />
-      <Header as="h2" content={`Week: ${basket.week}`} />
+      <Header as="h2" style={{ fontSize: '1.75em' }} content={`Week: ${basket.week}`} />
       <p style={{ fontSize: '1.5em' }}>{basket.description}</p>
       <br />
       <Card.Group centered>
@@ -41,6 +41,7 @@ function PublicBasket() {
           <Button color="orange" content="Here" size="large" style={{ marginLeft: '1em' }} />
         </Link>
       </p>
+      <br />
     </Container>
   );
 }

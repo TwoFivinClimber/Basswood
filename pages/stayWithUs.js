@@ -23,7 +23,7 @@ function stayWithUs() {
         showFullscreenButton={false}
       />
       <br />
-      <Header content="Agro Tourism or Just to Get Away" as="h1" />
+      <Header content="Agro Tourism or to Get Away" as="h1" />
       <br />
       <p style={{ fontSize: '1.5em' }}>
         {stayCopy.airBnb}
@@ -44,6 +44,7 @@ function stayWithUs() {
           airbnb
         </p>
       </div>
+      <br />
     </Container>
   );
 }

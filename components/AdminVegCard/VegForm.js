@@ -1,7 +1,7 @@
 /* eslint-disable object-curly-newline */
 import React, { useEffect, useState } from 'react';
 import {
-  Header, Segment, Form, Button,
+  Header, Segment, Form, Button, Image, Grid,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { createVeg, updateVeg } from '../../utils/data/veg';
@@ -14,6 +14,9 @@ const initialState = {
 
 function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   const [input, setInput] = useState(initialState);
+  const [image, setImage] = useState(null);
+  const [randomKey, setRandomKey] = useState('random');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInput((prevState) => ({
@@ -22,13 +25,18 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
     }));
   };
 
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.id) {
       updateVeg(input).then(() => onUpdate());
       setEdit(!edit);
     } else {
-      createVeg(input).then(() => onUpdate());
+      createVeg(input, image).then(() => onUpdate());
       setInput(initialState);
     }
   };
@@ -37,8 +45,10 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
     if (edit) {
       setEdit(!edit);
     }
-    setShowForm(!showForm);
+    setRandomKey(Math.random().toString(16));
+    setImage(null);
     setInput(initialState);
+    setShowForm(!showForm);
   };
 
   useEffect(() => {
@@ -50,7 +60,7 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   return (
     <Segment style={{ display: showForm ? 'block' : 'none' }}>
       <Header content={obj?.id ? 'Edit Vegetable' : 'Add Vegetable'} />
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} key={randomKey}>
         <Form.Input
           label="Name"
           name="name"
@@ -58,13 +68,23 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
           value={input.name}
           required
         />
-        <Form.Input
-          label="Image"
-          name="img"
-          onChange={handleChange}
-          value={input.img}
-          required
-        />
+        <Grid>
+          <Grid.Row columns={2}>
+            <Grid.Column>
+              <Form.Input
+                label="Image"
+                name="img"
+                type="file"
+                key={randomKey}
+                onInput={handleImage}
+                required
+              />
+            </Grid.Column>
+            <Grid.Column textAlign="center" verticalAlign="middle">
+              {image || input.img ? <Image verticalAlign="middle" centered size="small" src={image ? URL.createObjectURL(image) : input.img} /> : <Header as="h4" content="Image will display here" />}
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
         <Form.TextArea
           label="Description"
           name="description"

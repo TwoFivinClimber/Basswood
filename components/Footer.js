@@ -8,36 +8,33 @@ import MenuLink from './MenuLink';
 
 function Footer() {
   return (
-    <div style={{
-      bottom: '0', display: 'flex', flexDirection: 'column', justifyContent: 'center', right: '0', left: '0', marginTop: '5em',
-    }}
-    >
+    <div>
       <Divider horizontal content="Basswood" />
       <Container>
         <Grid columns="3" padded="vertically">
-          <Grid.Row>
-            <Grid.Column width={6}>
-              <Menu.Item style={{ display: 'flex' }} header as="h3">
-                <Image style={{ marginRight: '1em' }} src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624712/basswood/general%20website%20images/logo_b6nmjh.png" size="mini" />
+          <Grid.Row columns="equal" textAlign="center">
+            <Grid.Column>
+              <Menu.Item className="footHeader" header as="h3">
+                <Image spaced="right" src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624712/basswood/general%20website%20images/logo_b6nmjh.png" size="mini" />
                 <Link passHref href="/basswood">
                   Basswood Farm
                 </Link>
               </Menu.Item>
               <Grid columns="2">
                 <Grid.Column>
-                  {generateMenuConfig('nav')?.map((i) => (
+                  {generateMenuConfig('foot1')?.map((i) => (
                     <MenuLink href={i.href} name={i.name} />
                   ))}
                 </Grid.Column>
                 <Grid.Column>
-                  {generateMenuConfig('dropdown')?.map((i) => (
+                  {generateMenuConfig('foot2')?.map((i) => (
                     <MenuLink href={i.href} name={i.name} />
                   ))}
                 </Grid.Column>
               </Grid>
             </Grid.Column>
-            <Grid.Column width={6}>
-              <Menu.Item header as="h3">
+            <Grid.Column>
+              <Menu.Item className="footHeader" header as="h3">
                 <Link passHref href="/woodhouse">
                   Woodhoouse Homestead
                 </Link>
@@ -55,15 +52,24 @@ function Footer() {
                 </Grid.Column>
               </Grid>
             </Grid.Column>
-            <Grid.Column width={3}>
-              <Menu.Item header as="h3">
+            <Grid.Column>
+              <Menu.Item className="footHeader" header as="h3">
                 <Link passHref href="/contact">
                   Connect
                 </Link>
               </Menu.Item>
-              {generateMenuConfig('foot5')?.map((i) => (
-                <MenuLink href={i.href} name={i.name} />
-              ))}
+              <Grid columns={2}>
+                <Grid.Column>
+                  {generateMenuConfig('foot5')?.map((i) => (
+                    <MenuLink href={i.href} name={i.name} />
+                  ))}
+                </Grid.Column>
+                <Grid.Column>
+                  {generateMenuConfig('foot6')?.map((i) => (
+                    <MenuLink href={i.href} name={i.name} />
+                  ))}
+                </Grid.Column>
+              </Grid>
             </Grid.Column>
           </Grid.Row>
         </Grid>

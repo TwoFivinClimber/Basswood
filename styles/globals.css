@@ -32,16 +32,25 @@ a {
   display: flex;
   align-items: center;
 }
+/* Foter */
+
+.footHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*Index*/
-.welcome-header{
-  
-}
 
 .discover-cards{
   display: flex!important;
   justify-content: center;
   align-items: center;
+}
+/* Veg Card */
+
+.vegCardImgDiv {
+  object-fit: fill!important;
 }
 
 @media all and (max-width: 500px) {
@@ -58,6 +67,7 @@ a {
     justify-content: center;
     width: 4rem;
   }
+
   /* Index */
   .growingButton{
     width: 100px;
@@ -80,5 +90,9 @@ a {
     height: 30px;
     font-size: .8rem!important;
     }
+  /* Public Basket */
+  .publicVegCard{
+    flex-direction: column!important;
+  }
 
 } 

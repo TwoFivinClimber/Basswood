@@ -11,6 +11,7 @@ const clientCredentials = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   brevoKey: process.env.NEXT_PUBLIC_BREVO_API_KEY,
   adminEmail: process.env.NEXT_PUBLIC_BASSWOOD_EMAIL,
+  cloudinaryUrl: process.env.NEXT_PUBLIC_CLOUDINARY_URL,
 };
 
 if (!firebase.apps.length) {

@@ -3,7 +3,7 @@ import { Button, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 
-function AdminPortalCard({
+function PortalCard({
   title, content, route, label,
 }) {
   const router = useRouter();
@@ -18,11 +18,11 @@ function AdminPortalCard({
   );
 }
 
-AdminPortalCard.propTypes = {
+PortalCard.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   route: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
 };
 
-export default AdminPortalCard;
+export default PortalCard;
