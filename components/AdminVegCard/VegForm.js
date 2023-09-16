@@ -5,6 +5,7 @@ import {
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { createVeg, updateVeg } from '../../utils/data/veg';
+import { deleteCloudImage } from '../../utils/data/ cloudinary';
 
 const initialState = {
   description: '',
@@ -26,19 +27,16 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   };
 
   const handleImage = (e) => {
+    /// NEED TO TEST THIS //
+    if (input.cloudId) {
+      deleteCloudImage(input.cloudId);
+      setInput((prevState) => ({
+        ...prevState,
+        cloudId: '',
+      }));
+    }
     const file = e.target.files[0];
     setImage(file);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (obj.id) {
-      updateVeg(input).then(() => onUpdate());
-      setEdit(!edit);
-    } else {
-      createVeg(input, image).then(() => onUpdate());
-      setInput(initialState);
-    }
   };
 
   const cancleFunc = () => {
@@ -49,6 +47,20 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
     setImage(null);
     setInput(initialState);
     setShowForm(!showForm);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (obj.id) {
+      updateVeg(input, image).then(() => onUpdate());
+      setEdit(!edit);
+    } else {
+      createVeg(input, image).then(() => {
+        setInput(initialState);
+        onUpdate();
+        cancleFunc();
+      });
+    }
   };
 
   useEffect(() => {
