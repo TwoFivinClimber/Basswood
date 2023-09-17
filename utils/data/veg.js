@@ -10,8 +10,12 @@ const dbUrl = clientCredentials.databaseUrl;
 
 const getVeggies = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/veg.json`)
-    .then((response) => resolve(Object.values(response.data)))
-    .catch(reject);
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      }
+    })
+    .catch((error) => reject(error));
 });
 
 const getSingleVeg = (vegId) => new Promise((resolve, reject) => {

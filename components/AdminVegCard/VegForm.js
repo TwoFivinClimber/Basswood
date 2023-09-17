@@ -97,6 +97,7 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <br />
         <Form.TextArea
           label="Description"
           name="description"

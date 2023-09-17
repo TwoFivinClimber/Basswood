@@ -15,9 +15,17 @@ const uploadVeg = async (file) => {
   return response;
 };
 
+const uploadBasketPhoto = async (file) => {
+  const payload = new FormData();
+  payload.append('file', file);
+  payload.append('upload_preset', 'basket');
+  payload.append('cloud_name', 'basswood');
+  const response = await axios.post(`${cloudUrl}/upload`, payload);
+  return response;
+};
+
 const deleteCloudImage = async (imageId) => {
   const timeStamp = Math.round((new Date().getTime() / 1000));
-  console.log(cloudSecret);
   const data = new FormData();
   data.append('public_id', imageId);
   data.append('timestamp', timeStamp);
@@ -38,5 +46,4 @@ const deleteCloudImage = async (imageId) => {
 //     .catch(reject);
 // });
 
-// eslint-disable-next-line import/prefer-default-export
-export { uploadVeg, deleteCloudImage };
+export { uploadVeg, uploadBasketPhoto, deleteCloudImage };
