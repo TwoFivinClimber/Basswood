@@ -5,15 +5,29 @@ import Link from 'next/link';
 
 function InfoCard({ obj, orient }) {
   return (
-    <Card raised style={{ marginBottom: '4em', flexDirection: orient % 2 === 0 ? 'row-reverse' : 'row' }} fluid className="infoCard">
+    <Card
+      raised
+      className="infoCard"
+      style={{
+        marginBottom: '2em',
+        flexDirection: orient % 2 === 0 ? 'row-reverse' : 'row',
+      }}
+      fluid
+    >
       <Image size="medium" src={obj.image} />
       <Card.Content>
         <Card.Header>{obj.title}</Card.Header>
-        <Card.Description style={{ color: 'black', fontSize: '16px' }}>
+        <Card.Description style={{
+          color: 'inherit',
+          height: '50%',
+          fontSize: '1.25em',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+        >
           {obj.description}
         </Card.Description>
         <Divider />
-
         <Card.Description>
           <Link passHref style={{ fontWeight: 'bold' }} href={obj?.link}>
             Learn More

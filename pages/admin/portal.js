@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { signOut } from '../../utils/auth';
 import { useAuth } from '../../utils/authContext';
 import checkAdmin from '../../utils/data/admin';
+import PortalCard from '../../components/AdminPortalCard';
 
 function Portal() {
   const router = useRouter();
@@ -41,33 +42,9 @@ function Portal() {
       <Divider />
       <br />
       <Card.Group style={{ height: '100%' }}>
-        <Card fluid>
-          <Card.Content>
-            <Button floated="right" color="purple" content="To Basket Admin" onClick={() => router.push('/admin/basketAdmin')} />
-            <Card.Header as="h1">Basket Admin</Card.Header>
-          </Card.Content>
-          <Card.Content>
-            Modify your current basket or create next weeks basket
-          </Card.Content>
-        </Card>
-        <Card fluid>
-          <Card.Content>
-            <Button floated="right" color="purple" content="To Veg Admin" onClick={() => router.push('/admin/vegAdmin')} />
-            <Card.Header as="h1">Veg Admin</Card.Header>
-          </Card.Content>
-          <Card.Content>
-            Add crops to your database
-          </Card.Content>
-        </Card>
-        <Card fluid>
-          <Card.Content>
-            <Button floated="right" color="purple" content="To Product Admin" />
-            <Card.Header as="h1">Product Admin</Card.Header>
-          </Card.Content>
-          <Card.Content>
-            Add products for sale and adjust quantaties
-          </Card.Content>
-        </Card>
+        <PortalCard title="Basket Admin" content="View, Modify, or Create  Baskets" route="/admin/basketAdmin" label="To Basket Admin" />
+        <PortalCard title="Veg Admin" content="Add or Modify Veggies" label="To Veg Admin" route="/admin/vegAdmin" />
+        <PortalCard title="Product Admin" content="Add or Modify Products and Avaliability" label="To Product Admin" route="/admin/productAdmin" />
       </Card.Group>
     </Container>
   );

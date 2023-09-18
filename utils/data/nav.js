@@ -8,8 +8,12 @@ const menuConfig = [
     href: '/about',
   },
   {
-    name: 'Contact Us',
-    href: '/contact',
+    name: 'Basswood',
+    href: '/basswood',
+  },
+  {
+    name: 'Woodhouse',
+    href: '/woodhouse',
   },
   {
     name: 'Horse Boarding',
@@ -20,24 +24,8 @@ const menuConfig = [
     href: '/stayWithUs',
   },
   {
-    name: 'Experiences',
-    href: '/',
-  },
-  {
-    name: 'Basswood',
-    href: '/basswood',
-  },
-  {
-    name: 'Woodhouse',
-    href: '/woodhouse',
-  },
-  {
     name: 'CSA',
     href: '/csa',
-  },
-  {
-    name: 'Admin',
-    href: '/admin',
   },
   {
     name: 'Products',
@@ -51,6 +39,11 @@ const menuConfig = [
     name: 'Meet The Goats',
     href: '/goats',
   },
+  // Contact //
+  {
+    name: 'Contact Us',
+    href: '/contact',
+  },
   {
     name: 'Instagram',
     href: 'https://www.instagram.com/woodhousehomestead/',
@@ -63,20 +56,29 @@ const menuConfig = [
 
 const generateMenuConfig = (dest) => {
   if (dest === 'nav') {
-    const select = menuConfig.slice(0, 3);
+    const select = menuConfig.slice(0, 2);
     return select;
   }
   if (dest === 'dropdown') {
-    return menuConfig.slice(3, 5);
+    return menuConfig.slice(0, 6);
+  }
+  if (dest === 'foot1') {
+    return menuConfig.slice(0, 2);
+  }
+  if (dest === 'foot2') {
+    return menuConfig.slice(4, 6);
   }
   if (dest === 'foot3') {
-    return [8, 10].map((x) => menuConfig[x]);
+    return menuConfig.slice(6, 8);
   }
   if (dest === 'foot4') {
-    return menuConfig.slice(11, 13);
+    return menuConfig.slice(8, 10);
   }
   if (dest === 'foot5') {
-    return menuConfig.slice(-2);
+    return menuConfig.slice(10, 12);
+  }
+  if (dest === 'foot6') {
+    return [12].map((x) => menuConfig[x]);
   }
   return [];
 };

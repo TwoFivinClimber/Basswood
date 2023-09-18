@@ -24,9 +24,9 @@ function PublicBasket() {
       <Header as="h1" style={{ fontSize: '3.5em' }} textAlign="center" content="This Weeks Basket" />
       <Header as="h1" textAlign="center" content={`"${basket?.title || ''}"`} />
       <Divider />
-      <Image size="huge" centered src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624713/basswood/general%20website%20images/basket_bxa9d7.jpg" />
+      <Image size="huge" centered src={basket.photo} />
       <br />
-      <Header as="h2" content={`Week: ${basket.week}`} />
+      <Header as="h2" style={{ fontSize: '1.75em' }} content={`Week: ${basket.week}`} />
       <p style={{ fontSize: '1.5em' }}>{basket.description}</p>
       <br />
       <Card.Group centered>
@@ -41,6 +41,7 @@ function PublicBasket() {
           <Button color="orange" content="Here" size="large" style={{ marginLeft: '1em' }} />
         </Link>
       </p>
+      <br />
     </Container>
   );
 }

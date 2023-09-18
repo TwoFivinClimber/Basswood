@@ -40,6 +40,7 @@ function goats({ randomFact }) {
           <Button color="orange" content="Here" size="large" style={{ marginLeft: '1em' }} />
         </Link>
       </p>
+      <br />
     </Container>
   );
 }

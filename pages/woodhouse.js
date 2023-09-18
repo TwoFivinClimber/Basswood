@@ -7,8 +7,8 @@ import woodhouseCopy from '../utils/data/copy/woodhouse';
 function Woodhouse() {
   return (
     <Container style={{ padding: '4em' }}>
-      <Header as="h1">Wood House Homestead</Header>
-      <p style={{ fontSize: '18px' }}>
+      <Header style={{ fontSize: '3em' }} as="h1">Wood House Homestead</Header>
+      <p style={{ fontSize: '1.5em' }}>
         {woodhouseCopy.overview}
       </p>
       <Divider />

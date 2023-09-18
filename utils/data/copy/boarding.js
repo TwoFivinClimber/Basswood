@@ -1,9 +1,7 @@
 const boardingCopy = {
   mission: 'Form a short stay to becoming part of the farm, we take care of your equine needs',
-  whyBoard: 'We take pride in offering the best.....It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. I\'m not sure how long this will be but I want to kind of ramble to get a feel for the font size.',
-  highlights: ['Something', 'Something Else', 'Something More'],
-  shortTerm: 'About Short Term Boarding and all it\'s details.  This could easily be a list with bullets, it could be rates. really anything',
-  longTerm: 'About Long Term Boarding and all it\'s details.  This could easily be a list with bullets, it could be rates. really anything only its longer because it\'s long term',
+  whyBoard: "Boarding at Basswood Farm is a unique blend of practicality and genuine care. Our farm, nestled in serene countryside, offers a well-maintained environment where your horse's comfort and safety are paramount. We recognize your horse as a cherished member of your family and provide them with a dependable, caring home away from home.  ",
+  offer: "We offer a comprehensive range of equine services to cater to your every need. Whether you're seeking short-term or long-term boarding solutions, our well-established barn is the perfect home for your horse. Our experienced and caring staff members are dedicated to providing top-notch care and attention to your equine companion. Nestled in a secluded countryside location, we offer a peaceful retreat that's conveniently close to the vibrant cities of Nashville, Brentwood, and Franklin. ",
 };
 
 export default boardingCopy;

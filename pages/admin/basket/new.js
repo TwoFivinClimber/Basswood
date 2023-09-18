@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button, Card, Container, Form, Header, Segment,
+  Button, Card, Container, Form, Grid, Header, Image, Segment,
 } from 'semantic-ui-react';
 import AsyncSelect from 'react-select';
 import { useRouter } from 'next/router';
@@ -22,6 +22,7 @@ function NewBasket() {
   const [veggies, setVeggies] = useState([]);
   const [selected, setSelected] = useState([]);
   const [input, setInput] = useState({});
+  const [photo, setPhoto] = useState(null);
   const filteredVeggies = veggies.filter((veggie) => !selected.some((s) => s.id === veggie.id));
 
   const clearFunc = () => {
@@ -40,6 +41,12 @@ function NewBasket() {
       ...prev,
       [name]: value,
     }));
+    console.warn(input);
+  };
+
+  const handlePhoto = (e) => {
+    const file = e.target.files[0];
+    setPhoto(file);
   };
 
   const handleSelect = (e) => {
@@ -57,7 +64,7 @@ function NewBasket() {
       active: true,
     };
     const vegIdArr = selected.map((veg) => veg.id);
-    createNewWeekBasket(basket, vegIdArr).then(() => router.push('/admin/basketAdmin'));
+    createNewWeekBasket(basket, vegIdArr, photo).then(() => router.push('/admin/basketAdmin'));
   };
 
   useEffect(() => {
@@ -69,7 +76,6 @@ function NewBasket() {
         }
       });
     };
-
     if (user.uid) {
       checkAdmin().then((resp) => {
         if (!resp.data) {
@@ -92,6 +98,17 @@ function NewBasket() {
         <Form onSubmit={handleSubmit}>
           <Header>{`Week ${weekNumber}`}</Header>
           <Form.Input required label="Basket Title" name="title" onChange={handleChange} value={input.title} />
+          <Grid>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Form.Input type="file" required label="Basket Photo" name="photo" onChange={handlePhoto} value={input.photo} />
+              </Grid.Column>
+              <Grid.Column textAlign="center" verticalAlign="middle">
+                {photo ? <Image verticalAlign="middle" centered size="small" src={URL.createObjectURL(photo)} /> : <Header as="h4" content="Image will display here" />}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          <br />
           <Form.TextArea required label="Basket Description" name="description" onChange={handleChange} value={input.description} />
           <Form.Field>
             <label htmlFor="veggieSelect">Select Crop</label>
@@ -107,6 +124,13 @@ function NewBasket() {
             />
           </Form.Field>
           <br />
+          {input.photo ? (
+            <>
+              <Header textAlign="center" content="The Basket" />
+              <Image size="medium" centered src={input.photo} alt="Photo link is not working, try another image" />
+            </>
+          ) : ('')}
+          <br />
           <Card.Group centered>
             { selected.length ? selected.map((veg) => (
               <BasketVegCard key={veg.id} obj={veg} setSelected={setSelected} />
@@ -114,7 +138,7 @@ function NewBasket() {
           </Card.Group>
           <br />
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button disabled={!selected.length} size="large" type="submit" positive content="Publish" />
+            <Button disabled={!selected.length || !photo} size="large" type="submit" positive content="Publish" />
             <Button size="large" type="button" onClick={() => clearFunc()} negative content="Cancel" />
           </div>
         </Form>

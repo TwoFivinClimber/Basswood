@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Button,
-  Container, Divider, Grid, Header, Segment,
+  Container, Divider, Header,
 } from 'semantic-ui-react';
 import ImageGallery from 'react-image-gallery';
 import { useRouter } from 'next/router';
@@ -32,26 +32,13 @@ function Boarding() {
       <br />
       <Header as="h1" textAlign="center" content="What We Offer" />
       <br />
-      <Grid columns={2}>
-        <Grid.Column>
-          <Segment>
-            <Header textAlign="center" content="Short Term Boarding" />
-            <p>{boardingCopy.shortTerm}</p>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
-            <Header textAlign="center" content="Long Term Boarding" />
-            <p>{boardingCopy.longTerm}</p>
-          </Segment>
-        </Grid.Column>
-      </Grid>
-      <br />
-      <Header as="h1" textAlign="center" content="Interested In Boarding With Us ?" />
+      <p style={{ fontSize: '1.5em' }}>{boardingCopy.offer}</p>
+      <Header as="h1" textAlign="center" content="Interested In Boarding ?" />
       <Header as="h3" textAlign="center">
         Get In Touch
         <Button style={{ marginLeft: '1em' }} onClick={(() => router.push('/contact'))} color="orange" content="Here" />
       </Header>
+      <br />
     </Container>
   );
 }

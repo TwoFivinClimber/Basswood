@@ -19,7 +19,7 @@ function AdminVegModal({ obj, bsktId, open, setOpen, onUpdate }) {
       deleteThisBasketVeg(bsktId, obj.id).then(() => onUpdate());
       setOpen(!open);
     } else {
-      deleteVeg(obj.id).then(() => {
+      deleteVeg(obj.id, obj.cloudId).then(() => {
         onUpdate();
         setOpen(!open);
       });
@@ -96,6 +96,7 @@ AdminVegModal.propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
     img: PropTypes.string,
+    cloudId: PropTypes.string,
   }).isRequired,
 };
 

@@ -2,14 +2,18 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  background: linear-gradient(#ede7de, #f2dbc5);
+  /* background: linear-gradient(#ede7de, #f2dbc5); */
+  background-color: #f0e6db;
   background-attachment: fixed;
+  min-height: 100%!important;
+  min-width: 100vw;
 }
 
 #__next{
   min-height: 100vh;
+  min-width: 100%!important;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 a {
@@ -18,7 +22,9 @@ a {
 }
 
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box!important;
 }
 
 /* NAV */
@@ -27,15 +33,76 @@ a {
   display: flex;
   align-items: center;
 }
+/* Foter */
+
+.footer{
+  background-color: #638d1266!important
+}
+.footHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*Index*/
-.welcome-header{
-  padding-top: 5rem!important;
-  font-size: 5em!important;
-}
 
 .discover-cards{
   display: flex!important;
   justify-content: center;
   align-items: center;
 }
+
+/* Info Card */
+
+.infoCard {
+  background-color: #a7c28b40!important;
+}
+/* Veg Card */
+
+.vegCardImgDiv {
+  object-fit: fill!important;
+}
+
+@media all and (max-width: 500px) {
+  
+  * {
+    font-size: .75rem;
+  }
+  /* Nav */
+  .navButtons {
+    display: none!important;
+  }
+  .navDropDown{
+    display: flex;
+    justify-content: center;
+    width: 4rem;
+  }
+
+  /* Index */
+  .growingButton{
+    width: 100px;
+    height: auto;
+    font-size: 12px!important;
+  }
+  /* Basswood & Woodhouse Pages*/
+  .infoCard{
+    flex-direction: column!important;
+  }
+
+  /* About */
+  .about {
+    flex-direction: column-reverse!important;
+  }
+  /* Basket Admin */
+
+  .respButton {
+    width: 110px;
+    height: 30px;
+    font-size: .8rem!important;
+    }
+  /* Public Basket */
+  .publicVegCard{
+    flex-direction: column!important;
+  }
+
+} 

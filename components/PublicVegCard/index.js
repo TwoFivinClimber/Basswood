@@ -9,13 +9,22 @@ function PublicVegCard({ obj }) {
   return (
     <>
       <Card
+        className="publicVegCard"
         onClick={() => setOpen(!open)}
+        raised
         style={{
-          display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '40%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '40%',
+          backgroundColor: '#a7c28b40',
         }}
       >
-        <Image size="tiny" src={obj.img} style={{ paddingLeft: '1em' }} />
-        <Card.Content>
+        <div className="vegCardImgDiv">
+          <Image size="small" src={obj.img} style={{ }} />
+        </div>
+        <Card.Content style={{ border: 'none' }}>
           <Card.Header style={{ display: 'inline-block' }} content={obj.name} />
           <Card.Description content={`${obj.description?.slice(0, 75)}...`} />
         </Card.Content>

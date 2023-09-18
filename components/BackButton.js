@@ -4,10 +4,11 @@ import { Button, Icon } from 'semantic-ui-react';
 
 function BackButton() {
   const router = useRouter();
+
   return (
-    <Button inverted color="orange" floated="right" onClick={() => router.push('/admin/portal')}>
+    <Button className="respButton" inverted color="orange" floated="right" onClick={() => router.push('/admin/portal')}>
       <Icon name="backward" />
-      To Admin Home
+      To Admin
     </Button>
   );
 }

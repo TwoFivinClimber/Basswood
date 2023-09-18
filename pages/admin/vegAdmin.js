@@ -60,9 +60,9 @@ function VegAdmin() {
         <Divider />
         <VegForm onUpdate={getTheContent} obj={{}} showForm={showForm} setShowForm={setShowForm} />
         <Card.Group centered>
-          {veggies.map((i) => (
+          {veggies.length ? veggies?.map((i) => (
             <AdminVegCard key={i.id} obj={i} onUpdate={getTheContent} />
-          ))}
+          )) : <><br /> <Header content="Add Veggies To Your Garden" /> </>}
         </Card.Group>
       </Segment>
     </Segment>

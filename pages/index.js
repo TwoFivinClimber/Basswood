@@ -10,7 +10,16 @@ export default function Home() {
   const router = useRouter();
   return (
     <Container fluid>
-      <Header className="welcome-header" as="h1" textAlign="center" content="Welcome to Basswood Farm" />
+      <Header
+        as="h1"
+        textAlign="center"
+        content={home.welcome}
+        style={{
+          paddingTop: '5rem',
+          fontSize: '5em',
+        }}
+      />
+      <Header as="h3" textAlign="center" content={home.description} />
       <Container
         style={{
           marginTop: '3rem',
@@ -18,7 +27,7 @@ export default function Home() {
         }}
       >
         <Divider />
-        <Grid columns={2}>
+        <Grid columns={2} stackable>
           <Grid.Column style={{
             position: 'relative',
             display: 'flex',
@@ -29,11 +38,15 @@ export default function Home() {
             <Header
               content="Basswood Farm"
               as="h1"
+              textAlign="center"
+              onClick={() => router.push('/basswood')}
               style={{
                 zIndex: '1',
                 position: 'absolute',
-                color: '#ede7de',
+                paddingBottom: '50px',
+                color: 'black',
                 fontSize: '3.5em',
+                cursor: 'pointer',
               }}
             />
             <Link href="/basswood" passHref>
@@ -51,12 +64,16 @@ export default function Home() {
           >
             <Header
               content="Woodhouse Homestead"
+              textAlign="center"
               as="h1"
+              onClick={() => router.push('/woodhouse')}
               style={{
                 zIndex: '1',
+                paddingBottom: '50px',
                 position: 'absolute',
                 color: '#ede7de',
                 fontSize: '3.5em',
+                cursor: 'pointer',
               }}
             />
             <Link href="/woodhouse" passHref>
@@ -73,20 +90,21 @@ export default function Home() {
         }}
         vertical
       >
-        <Grid columns={2}>
+        <Grid columns={2} stackable>
           <Grid.Column textAlign="center" width={6}>
-            <Header as="h3" style={{ fontSize: '2em' }}>
+            <Header as="h3" style={{ fontSize: '2.75em' }}>
               We are Growing
             </Header>
           </Grid.Column>
           <Grid.Column verticalAlign="middle" width={10}>
             <p style={{ fontSize: '1.5em' }}>{home.csaFeature}</p>
-            <Button color="red" onClick={() => router.push('/csa')} content="Learm More" />
+            <Button color="red" className="growingButton" onClick={() => router.push('/csa')} content="Learn More" />
           </Grid.Column>
         </Grid>
       </Segment>
       <Header as="h1" style={{ textAlign: 'center' }} content="Follow us on Instagram" />
       <div className="elfsight-app-75027bd3-9acf-43e4-9c95-d77b42332919" />
     </Container>
+
   );
 }
