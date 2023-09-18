@@ -29,6 +29,7 @@ function BasketAdmin() {
   const filteredVeggies = veggies?.filter((veggie) => !currentBasket.veg?.some((s) => s.id === veggie.id));
   const [edit, setEdit] = useState(false);
   const [input, setInput] = useState(initialState);
+  const [photo, setPhoto] = useState(null);
 
   const getTheContent = () => {
     getVeggies().then(setVeggies);
@@ -89,7 +90,7 @@ function BasketAdmin() {
         </Header>
         <br />
         <Segment>
-          <BasketEditForm onUpdate={getTheContent} edit={edit} setEdit={setEdit} currentBasket={currentBasket} filteredVeggies={filteredVeggies} input={input} setInput={setInput} />
+          <BasketEditForm onUpdate={getTheContent} edit={edit} setEdit={setEdit} currentBasket={currentBasket} filteredVeggies={filteredVeggies} input={input} setInput={setInput} photo={photo} setPhoto={setPhoto} />
         </Segment>
       </Segment>
       <Segment>

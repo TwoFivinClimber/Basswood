@@ -27,7 +27,7 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   };
 
   const handleImage = (e) => {
-    /// NEED TO TEST THIS //
+    // Deletes from cloudinary if new image is uploaded //
     if (input.cloudId) {
       deleteCloudImage(input.cloudId);
       setInput((prevState) => ({

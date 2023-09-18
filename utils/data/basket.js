@@ -1,7 +1,9 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-useless-catch */
 import axios from 'axios';
 import { clientCredentials } from '../client';
 import { getUserToken } from '../auth';
+import { uploadBasketPhoto } from './ cloudinary';
 
 const dbUrl = clientCredentials.databaseUrl;
 
@@ -29,13 +31,21 @@ const createBasket = (basketObj) => new Promise((resolve, reject) => {
   });
 });
 
-const updateBasket = (update) => new Promise((resolve, reject) => {
-  getUserToken().then((data) => {
-    axios.patch(`${dbUrl}/basket/${update.id}.json?auth=${data}`, update)
-      .then(resolve)
-      .catch(reject);
-  });
-});
+const updateBasket = async (update, photo) => {
+  if (photo) {
+    const cloudResponse = await uploadBasketPhoto(photo);
+    const { public_id, url } = cloudResponse.data;
+    const fullBasketObj = {
+      ...update,
+      cloudId: public_id,
+      photo: url,
+    };
+    const token = await getUserToken();
+    return axios.patch(`${dbUrl}/basket/${update.id}.json?auth=${token}`, fullBasketObj);
+  }
+  const token = await getUserToken();
+  return axios.patch(`${dbUrl}/basket/${update.id}.json?auth=${token}`, update);
+};
 
 const getActiveBasket = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/basket.json?orderBy="active"&equalTo=true`)

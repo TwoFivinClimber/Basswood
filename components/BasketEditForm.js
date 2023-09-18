@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-  Form, Grid, Header, Button, Card, Image, Container,
+  Form, Grid, Header, Button, Card, Image,
 } from 'semantic-ui-react';
 import AsyncSelect from 'react-select';
 import PropTypes from 'prop-types';
 import { createBasketVeg } from '../utils/data/basketVeg';
 import { updateBasket } from '../utils/data/basket';
 import BasketVegCard from './BasketVegCard';
+import { deleteCloudImage } from '../utils/data/ cloudinary';
 
 const initialState = {
   description: '',
@@ -15,7 +16,7 @@ const initialState = {
 };
 
 function BasketEditForm({
-  onUpdate, edit, setEdit, currentBasket, filteredVeggies, input, setInput,
+  onUpdate, edit, setEdit, currentBasket, filteredVeggies, input, setInput, photo, setPhoto,
 }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,6 +24,11 @@ function BasketEditForm({
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handlePhoto = (e) => {
+    const file = e.target.files[0];
+    setPhoto(file);
   };
 
   const writeBasketVeg = (e) => {
@@ -35,13 +41,17 @@ function BasketEditForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const obj = {
-      id: currentBasket.id,
+    const basketObj = {
+      ...currentBasket,
       ...input,
     };
-    updateBasket(obj).then(() => onUpdate());
+    if (photo) {
+      deleteCloudImage(basketObj.cloudId);
+    }
+    updateBasket(basketObj, photo).then(() => onUpdate());
     setEdit(!edit);
     setInput(initialState);
+    setPhoto(null);
   };
 
   return (
@@ -49,8 +59,28 @@ function BasketEditForm({
       {edit ? (
         <>
           <Form.Input label="Basket Title" name="title" onChange={handleChange} value={input.title} />
-          <Form.Input label="Basket Photo" name="photo" onChange={handleChange} value={input.photo} />
+          <Grid>
+            <Grid.Row columns={2}>
+              <Grid.Column>
+                <Form.Input type="file" label="Basket Photo" name="photo" onChange={handlePhoto} />
+              </Grid.Column>
+              <Grid.Column textAlign="center" verticalAlign="middle">
+                <Image verticalAlign="middle" centered size="small" src={photo ? URL.createObjectURL(photo) : input.photo} />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           <Form.TextArea label="Basket Description" name="description" onChange={handleChange} value={input.description} />
+          <Form.Field hidden={!edit}>
+            <label htmlFor="veggieSelect">Select Veggies</label>
+            <AsyncSelect
+              id="veggiesSelect"
+              options={filteredVeggies}
+              getOptionValue={(i) => i.id}
+              getOptionLabel={(i) => i.name}
+              onChange={writeBasketVeg}
+              value=""
+            />
+          </Form.Field>
         </>
       ) : (
         <Grid columns={2}>
@@ -65,24 +95,6 @@ function BasketEditForm({
           </Grid.Column>
         </Grid>
       )}
-      <Form.Field hidden={!edit}>
-        <label htmlFor="veggieSelect">Select Veggies</label>
-        <AsyncSelect
-          id="veggiesSelect"
-          options={filteredVeggies}
-          getOptionValue={(i) => i.id}
-          getOptionLabel={(i) => i.name}
-          onChange={writeBasketVeg}
-          value=""
-        />
-      </Form.Field>
-      <br />
-      {edit ? (
-        <Container>
-          <Header textAlign="center" content="Basket Photo" />
-          <Image size="medium" centered src={input.photo} alt="Photo link is not working, try another image" />
-        </Container>
-      ) : ('')}
       <br />
       <Header textAlign="center" content="Veggies" />
       <Card.Group centered>
@@ -105,6 +117,8 @@ BasketEditForm.propTypes = {
   edit: PropTypes.bool.isRequired,
   setEdit: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
+  photo: PropTypes.string,
+  setPhoto: PropTypes.func.isRequired,
   currentBasket: PropTypes.shape({
     title: PropTypes.string,
     id: PropTypes.string,
@@ -130,6 +144,10 @@ BasketEditForm.propTypes = {
     photo: PropTypes.string,
   }).isRequired,
   setInput: PropTypes.func.isRequired,
+};
+
+BasketEditForm.defaultProps = {
+  photo: null,
 };
 
 export default BasketEditForm;

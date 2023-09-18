@@ -76,7 +76,6 @@ function NewBasket() {
         }
       });
     };
-
     if (user.uid) {
       checkAdmin().then((resp) => {
         if (!resp.data) {
