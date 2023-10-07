@@ -29,6 +29,7 @@ function Navbar() {
             {generateMenuConfig('dropdown')?.map((i) => (
               <MenuLink href={i.href} name={i.name} />
             ))}
+            <MenuLink href="/directions" name="Get Directions" />
           </Dropdown.Menu>
         </Dropdown>
       </Menu.Menu>

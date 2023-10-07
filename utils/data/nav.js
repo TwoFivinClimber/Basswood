@@ -52,6 +52,10 @@ const menuConfig = [
     name: 'Facebook',
     href: 'https://www.facebook.com/pages/Basswood-Farm/156409324399440',
   },
+  {
+    name: 'Directions',
+    href: '/directions',
+  },
 ];
 
 const generateMenuConfig = (dest) => {
@@ -78,7 +82,7 @@ const generateMenuConfig = (dest) => {
     return menuConfig.slice(10, 12);
   }
   if (dest === 'foot6') {
-    return [12].map((x) => menuConfig[x]);
+    return menuConfig.slice(12, 14);
   }
   return [];
 };

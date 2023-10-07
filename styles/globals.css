@@ -63,6 +63,11 @@ a {
   object-fit: fill!important;
 }
 
+.directionButtonsDiv{
+  display: flex;
+  align-items: center;
+}
+
 @media all and (max-width: 500px) {
   
   * {
