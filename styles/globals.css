@@ -28,15 +28,28 @@ a {
 }
 
 /* NAV */
+.navBar{
+  background: linear-gradient( #638d1266, #f0e6db 100%)!important;
+  border-right: none!important;
+  border-left: none!important;
+  border-radius: none!important;
+}  
 
 .nav-menu a{
   display: flex;
   align-items: center;
 }
+
+.navDropDown {
+  background-color: #d4e1af!important;
+  min-width: 200px!important;
+}
+
+
 /* Foter */
 
 .footer{
-  background-color: #638d1266!important
+  background: linear-gradient(#f0e6db,#638d1266) 
 }
 .footHeader {
   display: flex;
@@ -63,6 +76,13 @@ a {
   object-fit: fill!important;
 }
 
+/* Directions Page */
+.navigationDiv{
+  display: flex;
+  align-items: center;
+}
+
+
 @media all and (max-width: 500px) {
   
   * {
@@ -71,11 +91,6 @@ a {
   /* Nav */
   .navButtons {
     display: none!important;
-  }
-  .navDropDown{
-    display: flex;
-    justify-content: center;
-    width: 4rem;
   }
 
   /* Index */
@@ -105,4 +120,15 @@ a {
     flex-direction: column!important;
   }
 
-} 
+  /* Directions */
+
+  .directionButtons {
+    display: flex;
+    flex-direction: column!important;
+
+  }
+  .directionButtons > * {
+    font-size: 12px!important;
+}
+
+}
