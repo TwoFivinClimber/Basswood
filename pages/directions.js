@@ -17,7 +17,7 @@ function Directions() {
       <br />
       <Header as="h2" content="Navigation" />
       <div className="navigationDiv">
-        <p style={{ fontSize: '18px', minWidth: '40%' }}>
+        <p style={{ fontSize: '1.5rem', minWidth: '45%' }}>
           Basswood Farm <br />
           615 Beech Creek Road <br />
           Brentwood, Tennessee 37027
@@ -38,12 +38,12 @@ function Directions() {
       </div>
       <br />
       <Header as="h2" content="From the South" />
-      <p style={{ fontSize: '18px' }}>
+      <p style={{ fontSize: '1.5rem' }}>
         {directions.fromSouth}
       </p>
       <br />
       <Header as="h2" content="From the North" />
-      <p style={{ fontSize: '18px' }}>
+      <p style={{ fontSize: '1.5rem' }}>
         {directions.fromNorth}
       </p>
       <br />

@@ -11,6 +11,7 @@ function Navbar() {
       attached="top"
       borderless
       fluid
+      className="navBar"
       // style={{ backgroundColor: '#ede7de' }}
       style={{ backgroundColor: '#638d1266', border: '1px  solid #545640', margin: 0 }}
     >
@@ -24,8 +25,13 @@ function Navbar() {
         {generateMenuConfig('nav')?.map((i) => (
           <MenuLink tag="navButtons" key={i.name} href={i.href} name={i.name} />
         ))}
-        <Dropdown item className="navDropDown" labeled icon="sliders horizontal">
-          <Dropdown.Menu>
+        <Dropdown item labeled icon="sliders horizontal">
+          <Dropdown.Menu className="navDropDown">
+            <Dropdown.Header style={{ display: 'flex', alignItems: 'center', fontSize: '1rem' }}>
+              <Image style={{ marginRight: '1em' }} src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624712/basswood/general%20website%20images/logo_b6nmjh.png" size="mini" />
+              Basswood Farm
+            </Dropdown.Header>
+            <Dropdown.Divider />
             {generateMenuConfig('dropdown')?.map((i) => (
               <MenuLink href={i.href} name={i.name} />
             ))}
