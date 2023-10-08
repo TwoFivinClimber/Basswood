@@ -16,20 +16,23 @@ function Directions() {
       <Image size="huge" centered src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1696648253/basswood/general%20website%20images/xmt5kh1y0wdqwfket30o.jpg" />
       <br />
       <Header as="h2" content="Navigation" />
-      <div className="directionButtonsDiv">
-        <p style={{ fontSize: '18px', minWidth: '50%' }}>
+      <div className="navigationDiv">
+        <p style={{ fontSize: '18px', minWidth: '40%' }}>
           Basswood Farm <br />
           615 Beech Creek Road <br />
           Brentwood, Tennessee 37027
         </p>
-        <div>
-          <Button href={directions.googleLink} target="_blank" size="large" color="blue">
+        <div className="directionButtons">
+          <Button size="large" href={directions.googleLink} target="_blank" color="google plus">
             <Icon name="google" />
             Google Maps
           </Button>
-          <Button href={directions.appleLink} target="_blank" size="large" color="green">
+          <Button size="large" href={directions.appleLink} target="_blank" color="instagram">
             <Icon name="apple" />
             Apple Maps
+          </Button>
+          <Button size="large" href={directions.wazeLink} target="_blank" style={{ backgroundColor: 'purple', color: 'white' }}>
+            Waze
           </Button>
         </div>
       </div>
