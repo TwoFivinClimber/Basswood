@@ -24,6 +24,15 @@ const uploadBasketPhoto = async (file) => {
   return response;
 };
 
+const uploadProductPhoto = async (file) => {
+  const payload = new FormData();
+  payload.append('file', file);
+  payload.append('upload_preset', 'products');
+  payload.append('cloud_name', 'basswood');
+  const response = await axios.post(`${cloudUrl}/upload`, payload);
+  return response;
+};
+
 const deleteCloudImage = async (imageId) => {
   const timeStamp = Math.round((new Date().getTime() / 1000));
   const data = new FormData();
@@ -46,4 +55,6 @@ const deleteCloudImage = async (imageId) => {
 //     .catch(reject);
 // });
 
-export { uploadVeg, uploadBasketPhoto, deleteCloudImage };
+export {
+  uploadVeg, uploadBasketPhoto, deleteCloudImage, uploadProductPhoto,
+};
