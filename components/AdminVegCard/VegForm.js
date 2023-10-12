@@ -89,7 +89,7 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
                 type="file"
                 key={randomKey}
                 onInput={handleImage}
-                required
+                required={!edit}
               />
             </Grid.Column>
             <Grid.Column textAlign="center" verticalAlign="middle">

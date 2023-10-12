@@ -10,10 +10,12 @@ function AdminProductCard({ obj, onUpdate }) {
   return (
     <>
       <Card onClick={setOpen}>
-        <Image src={obj.img} wrapped ui={false} />
+        <Card.Content style={{ display: 'flex', alignItems: 'center', minHeight: '62%' }}>
+          <Image fluid style={{ maxHeight: '300px', objectFit: 'cover' }} src={obj.img} />
+        </Card.Content>
         <Card.Content>
           <Card.Header>{obj.name}</Card.Header>
-          <Card.Description>
+          <Card.Description className="productCardDescription">
             {obj.description}
           </Card.Description>
         </Card.Content>
