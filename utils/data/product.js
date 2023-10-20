@@ -12,6 +12,11 @@ const getProducts = async () => {
   return Object.values(response.data);
 };
 
+const getAvailableProducts = async () => {
+  const response = await axios.get(`${dbUrl}/product.json?orderBy="available"&equalTo=true`);
+  return Object.values(response.data);
+};
+
 const createProduct = async (input, file) => {
   const cloudResponse = await uploadProductPhoto(file);
   const { public_id, url } = cloudResponse.data;
@@ -57,5 +62,5 @@ const deleteProduct = async (id, cloudId) => {
 };
 
 export {
-  getProducts, createProduct, updateProduct, deleteProduct,
+  getProducts, createProduct, updateProduct, deleteProduct, getAvailableProducts,
 };

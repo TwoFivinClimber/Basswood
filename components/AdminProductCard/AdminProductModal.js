@@ -4,26 +4,18 @@ import {
   Modal, Image, Button, Header, Confirm, Label,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { useRouter } from 'next/router';
 import ProductForm from './ProductForm';
-import { deleteVeg } from '../../utils/data/veg';
 import { deleteProduct } from '../../utils/data/product';
 
-function AdminProductModal({ obj, bsktId, open, setOpen, onUpdate }) {
+function AdminProductModal({ obj, open, setOpen, onUpdate }) {
   const [edit, setEdit] = useState(false);
   const [confirm, setConfirm] = useState(false);
-  const router = useRouter();
 
   const deleteRemoveFunc = () => {
-    if (router.route === '/basketAdmin') {
-      deleteProduct(bsktId, obj.id).then(() => onUpdate());
+    deleteProduct(obj.id, obj.cloudId).then(() => {
+      onUpdate();
       setOpen(!open);
-    } else {
-      deleteVeg(obj.id, obj.cloudId).then(() => {
-        onUpdate();
-        setOpen(!open);
-      });
-    }
+    });
   };
 
   return (
@@ -76,7 +68,6 @@ AdminProductModal.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  bsktId: PropTypes.number,
   obj: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -85,10 +76,6 @@ AdminProductModal.propTypes = {
     available: PropTypes.bool,
     cloudId: PropTypes.string,
   }).isRequired,
-};
-
-AdminProductModal.defaultProps = {
-  bsktId: null,
 };
 
 export default AdminProductModal;

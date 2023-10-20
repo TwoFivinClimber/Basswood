@@ -6,12 +6,16 @@ import {
 import Link from 'next/link';
 import { getCurrentBasket } from '../utils/data/mergedData';
 import PublicVegCard from '../components/PublicVegCard';
+import { getAvailableProducts } from '../utils/data/product';
+import PublicProductCard from '../components/PublicProductCard';
 
 function PublicBasket() {
   const [basket, setBasket] = useState({});
+  const [products, setProducts] = useState([]);
 
   const getTheBasket = () => {
     getCurrentBasket().then(setBasket);
+    getAvailableProducts().then(setProducts);
   };
 
   useEffect(() => {
@@ -32,6 +36,13 @@ function PublicBasket() {
       <Card.Group centered>
         {basket.veg?.map((veg) => (
           <PublicVegCard obj={veg} />
+        ))}
+      </Card.Group>
+      <Header as="h2" style={{ fontSize: '1.75em' }} content="Products" />
+      <p style={{ fontSize: '1.25em' }}>Enhance your basket with some of our farm-made products.  Just </p>
+      <Card.Group centered style={{ justifyContent: 'space-evenly' }}>
+        {products.map((p) => (
+          <PublicProductCard obj={p} />
         ))}
       </Card.Group>
       <Header as="h2" content="Not a Member ?" />
