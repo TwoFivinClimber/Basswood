@@ -17,12 +17,12 @@ function PublicVegCard({ obj }) {
           flexDirection: 'row',
           justifyContent: 'center',
           alignItems: 'center',
-          width: '40%',
+          width: '35%',
           backgroundColor: '#a7c28b40',
         }}
       >
         <div className="vegCardImgDiv">
-          <Image size="small" src={obj.img} style={{ }} />
+          <Image size="small" src={obj.img} />
         </div>
         <Card.Content style={{ border: 'none' }}>
           <Card.Header style={{ display: 'inline-block' }} content={obj.name} />

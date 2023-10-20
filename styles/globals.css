@@ -41,7 +41,7 @@ a {
 }
 
 .navDropDown {
-  background-color: #d4e1af!important;
+  background: linear-gradient( #638d1266, #f0e6db 60%)!important;
   min-width: 200px!important;
 }
 
@@ -74,6 +74,16 @@ a {
 
 .vegCardImgDiv {
   object-fit: fill!important;
+}
+/* Product Card */
+.productCardDescription{
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  
 }
 
 /* Directions Page */

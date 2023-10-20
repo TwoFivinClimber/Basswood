@@ -1,11 +1,11 @@
 /* eslint-disable object-curly-newline */
 import React, { useEffect, useState } from 'react';
 import {
-  Header, Segment, Form, Button, Image, Grid,
+  Header, Segment, Form, Button, Image, Grid, Checkbox,
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { createVeg, updateVeg } from '../../utils/data/veg';
-import { deleteCloudImage } from '../../utils/data/ cloudinary';
+import deleteCloudImage from '../../utils/data/ cloudinary';
+import { createProduct, updateProduct } from '../../utils/data/product';
 
 const initialState = {
   description: '',
@@ -13,7 +13,7 @@ const initialState = {
   img: '',
 };
 
-function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
+function ProductForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   const [input, setInput] = useState(initialState);
   const [image, setImage] = useState(null);
   const [randomKey, setRandomKey] = useState('random');
@@ -23,6 +23,14 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
     setInput((prevState) => ({
       ...prevState,
       [name]: value,
+    }));
+  };
+
+  const handleAvailable = (e, bool) => {
+    const { checked } = bool;
+    setInput((prev) => ({
+      ...prev,
+      available: checked,
     }));
   };
 
@@ -52,10 +60,10 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.id) {
-      updateVeg(input, image).then(() => onUpdate());
+      updateProduct(input, image).then(() => onUpdate());
       setEdit(!edit);
     } else {
-      createVeg(input, image).then(() => {
+      createProduct(input, image).then(() => {
         setInput(initialState);
         onUpdate();
         cancleFunc();
@@ -106,6 +114,11 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
           onChange={handleChange}
           required
         />
+        <br />
+        <Form.Field>
+          <Checkbox checked={input.available} onChange={handleAvailable} toggle label="Available" />
+        </Form.Field>
+        <br />
         <Button type="submit" content="Submit" positive />
         <Button type="button" negative content="Cancel" onClick={() => cancleFunc()} />
       </Form>
@@ -113,7 +126,7 @@ function VegForm({ obj, setEdit, edit, onUpdate, showForm, setShowForm }) {
   );
 }
 
-VegForm.propTypes = {
+ProductForm.propTypes = {
   edit: PropTypes.bool,
   setEdit: PropTypes.func,
   onUpdate: PropTypes.func.isRequired,
@@ -127,11 +140,11 @@ VegForm.propTypes = {
   }).isRequired,
 };
 
-VegForm.defaultProps = {
+ProductForm.defaultProps = {
   edit: null,
   setEdit: null,
   showForm: null,
   setShowForm: null,
 };
 
-export default VegForm;
+export default ProductForm;
