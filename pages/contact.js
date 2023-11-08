@@ -24,6 +24,7 @@ function Contact() {
       ...prev,
       [name]: value,
     }));
+    console.log(adminEmail);
   };
 
   const handleSubmit = (e) => {
@@ -36,7 +37,7 @@ function Contact() {
       to: [
         {
           email: adminEmail,
-          name: 'Brett Hughes',
+          name: 'Doug Cook',
         },
       ],
       subject: input.subject,

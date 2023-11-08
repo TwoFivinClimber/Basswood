@@ -12,9 +12,9 @@ function basswood() {
         {basswoodCopy.overview}
       </p>
       <Divider />
-      <Header textAlign="center" as="h1">Provisions</Header>
+      <Header textAlign="center" as="h1">The Barn</Header>
       <InfoCard obj={provisions[0]} orient={1} />
-      <Header textAlign="center" as="h1">Agro Tourism</Header>
+      <Header textAlign="center" as="h1">Agritourism</Header>
       <InfoCard obj={provisions[1]} orient={0} />
       <Header textAlign="center" as="h1">Coming Soon</Header>
       <InfoCard obj={provisions[2]} orient={1} />

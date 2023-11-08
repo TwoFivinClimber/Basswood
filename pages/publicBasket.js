@@ -25,7 +25,7 @@ function PublicBasket() {
   return (
     <Container>
       <br />
-      <Header as="h1" style={{ fontSize: '3.5em' }} textAlign="center" content="This Weeks Basket" />
+      <Header as="h1" style={{ fontSize: '3.5em' }} textAlign="center" content="This Week's Basket" />
       <Header as="h1" textAlign="center" content={`"${basket?.title || ''}"`} />
       <Divider />
       <Image size="huge" centered src={basket.photo} />

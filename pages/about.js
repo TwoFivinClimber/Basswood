@@ -18,13 +18,16 @@ function About() {
       <Container>
         <Header as="h1" content={about.header} />
         <p style={{ fontSize: '18px' }}>
-          {`${about.general} ${about.location} ${about.horses}`}
+          {`${about.general} ${about.location}`}
         </p>
         <p style={{ fontSize: '18px' }}>
           {about.woodhouse}
         </p>
         <p style={{ fontSize: '18px' }}>
           {about.brenda}
+          <br />
+          {about.doug}
+          <br />
           <br />
           {about.basswood}
         </p>

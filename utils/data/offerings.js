@@ -1,7 +1,7 @@
 const offerings = [
   {
     title: 'CSA',
-    description: 'Discover the essence of community and sustainability through our Crop Share Agreement here at our farm. By joining our program, you become an integral part of our farming journey, sharing in the bountiful harvest of our fields.',
+    description: 'Discover the essence of community and sustainability through our Community Supported Agriculture. By joining our program, you become an integral part of our farming journey, sharing in the bountiful harvest of our fields.',
     image: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624716/basswood/general%20website%20images/tomato_q0xj4c.jpg',
     link: '/csa',
   },

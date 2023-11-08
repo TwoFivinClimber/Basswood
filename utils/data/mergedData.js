@@ -4,7 +4,6 @@
 import { createBasket, deleteBasket, disableBasket, getActiveBasket, getActiveBaskets, getBasket } from './basket';
 import { getSingleVeg } from './veg';
 import { createBasketVeg, deleteBasketVeg, getBasketVeg } from './basketVeg';
-import { uploadBasketPhoto } from './ cloudinary';
 
 const getCurrentBasket = () => new Promise((resolve, reject) => {
   getActiveBasket().then((basket) => {
@@ -44,18 +43,11 @@ const deleteThisBasketVeg = (bsktId, vegId) => new Promise((resolve, reject) => 
     .catch(reject);
 });
 
-const createNewWeekBasket = async (basketObj, vegArr, photo) => {
+const createNewWeekBasket = async (basketObj, vegArr) => {
   const activeBaskets = await getActiveBaskets();
   const disable = activeBaskets.map((bskt) => disableBasket(bskt.id));
   Promise.all(disable);
-  const cloudResponse = await uploadBasketPhoto(photo);
-  const { public_id, url } = cloudResponse.data;
-  const fullBasketObj = {
-    ...basketObj,
-    photo: url,
-    cloudId: public_id,
-  };
-  const bsktId = await createBasket(fullBasketObj);
+  const bsktId = await createBasket(basketObj);
   const createVeggies = vegArr.map((veg) => createBasketVeg({ veg, basket: bsktId }));
   const result = await Promise.all(createVeggies);
   return result;

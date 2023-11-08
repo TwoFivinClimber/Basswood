@@ -3,7 +3,6 @@
 import axios from 'axios';
 import { clientCredentials } from '../client';
 import { getUserToken } from '../auth';
-import { uploadBasketPhoto } from './ cloudinary';
 
 const dbUrl = clientCredentials.databaseUrl;
 
@@ -31,18 +30,7 @@ const createBasket = (basketObj) => new Promise((resolve, reject) => {
   });
 });
 
-const updateBasket = async (update, photo) => {
-  if (photo) {
-    const cloudResponse = await uploadBasketPhoto(photo);
-    const { public_id, url } = cloudResponse.data;
-    const fullBasketObj = {
-      ...update,
-      cloudId: public_id,
-      photo: url,
-    };
-    const token = await getUserToken();
-    return axios.patch(`${dbUrl}/basket/${update.id}.json?auth=${token}`, fullBasketObj);
-  }
+const updateBasket = async (update) => {
   const token = await getUserToken();
   return axios.patch(`${dbUrl}/basket/${update.id}.json?auth=${token}`, update);
 };

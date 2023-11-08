@@ -13,7 +13,7 @@ function stayWithUs() {
     <Container>
       <br />
       <Header textAlign="center" style={{ fontSize: '4em' }} content="Stay With Us" />
-      <p style={{ textAlign: 'center', fontSize: '1.5em' }}>Basswood Farm&apos;s Historic Franklin Farmouse </p>
+      <p style={{ textAlign: 'center', fontSize: '1.5em' }}>Bell Historic Franklin Farmouse </p>
       <Divider />
       <ImageGallery
         autoPlay
@@ -23,7 +23,7 @@ function stayWithUs() {
         showFullscreenButton={false}
       />
       <br />
-      <Header content="Agro Tourism or to Get Away" as="h1" />
+      <Header content="Agritourism or to Get Away" as="h1" />
       <br />
       <p style={{ fontSize: '1.5em' }}>
         {stayCopy.airBnb}
