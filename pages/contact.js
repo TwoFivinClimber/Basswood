@@ -24,7 +24,6 @@ function Contact() {
       ...prev,
       [name]: value,
     }));
-    console.log(adminEmail);
   };
 
   const handleSubmit = (e) => {
@@ -59,7 +58,7 @@ function Contact() {
             <Divider />
             <Header as="h2" content="We'd Love To Hear From You" />
           </Grid.Column>
-          <Grid.Column style={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid.Column style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Image size="medium" rounded src="https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624715/basswood/general%20website%20images/garlic_xmepot.jpg" />
           </Grid.Column>
         </Grid>

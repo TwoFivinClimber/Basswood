@@ -23,12 +23,12 @@ function Footer() {
               <Grid columns="2">
                 <Grid.Column>
                   {generateMenuConfig('foot1')?.map((i) => (
-                    <MenuLink href={i.href} name={i.name} />
+                    <MenuLink href={i.href} name={i.name} tag="footerMenu" />
                   ))}
                 </Grid.Column>
                 <Grid.Column>
                   {generateMenuConfig('foot2')?.map((i) => (
-                    <MenuLink href={i.href} name={i.name} />
+                    <MenuLink href={i.href} name={i.name} tag="footerMenu" />
                   ))}
                 </Grid.Column>
               </Grid>
@@ -42,18 +42,18 @@ function Footer() {
               <Grid columns={2}>
                 <Grid.Column>
                   {generateMenuConfig('foot3')?.map((i) => (
-                    <MenuLink href={i.href} name={i.name} />
+                    <MenuLink href={i.href} name={i.name} tag="footerMenu" />
                   ))}
                 </Grid.Column>
                 <Grid.Column>
                   {generateMenuConfig('foot4')?.map((i) => (
-                    <MenuLink href={i.href} name={i.name} />
+                    <MenuLink href={i.href} name={i.name} tag="footerMenu" />
                   ))}
                 </Grid.Column>
               </Grid>
             </Grid.Column>
             <Grid.Column>
-              <Menu.Item className="footHeader" header as="h3">
+              <Menu.Item className="footHeader contact" header as="h3">
                 <Link passHref href="/contact">
                   Connect
                 </Link>
@@ -61,12 +61,12 @@ function Footer() {
               <Grid columns={2}>
                 <Grid.Column>
                   {generateMenuConfig('foot5')?.map((i) => (
-                    <MenuLink href={i.href} name={i.name} />
+                    <MenuLink href={i.href} name={i.name} tag="footerMenu" />
                   ))}
                 </Grid.Column>
                 <Grid.Column>
                   {generateMenuConfig('foot6')?.map((i) => (
-                    <MenuLink href={i.href} name={i.name} />
+                    <MenuLink href={i.href} name={i.name} tag="footerMenu" />
                   ))}
                 </Grid.Column>
               </Grid>

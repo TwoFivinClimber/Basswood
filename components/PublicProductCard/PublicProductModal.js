@@ -11,7 +11,7 @@ function PublicProductModal({ obj, open, setOpen }) {
       onOpen={() => setOpen(true)}
       open={open}
     >
-      <Modal.Content image>
+      <Modal.Content image style={{ backgroundColor: '#DEDCCC' }}>
         <Image size="medium" src={obj.img} wrapped />
         <Modal.Description>
           <Header>{obj.name}</Header>
@@ -19,7 +19,7 @@ function PublicProductModal({ obj, open, setOpen }) {
           <Label color="green">Available</Label>
         </Modal.Description>
       </Modal.Content>
-      <Modal.Actions>
+      <Modal.Actions style={{ backgroundColor: '#DEDCCC' }}>
         <Button onClick={() => setOpen(!open)} color="green">
           Close
         </Button>

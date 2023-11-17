@@ -40,8 +40,9 @@ a {
   align-items: center;
 }
 
+
 .navDropDown {
-  background: linear-gradient( #638d1266, #f0e6db 60%)!important;
+  background: linear-gradient( #bfc695, #f0e6db 60%)!important;
   min-width: 200px!important;
 }
 
@@ -76,14 +77,16 @@ a {
   object-fit: fill!important;
 }
 /* Product Card */
-.productCardDescription{
-  
+.publicProductCard {
+  background-color: #DEDCCC!important;
+}
+
+.publicProductCardDescription{
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
-  
 }
 
 /* Directions Page */
@@ -97,12 +100,25 @@ a {
   
   * {
     font-size: .75rem;
+    line-height: 1em;
   }
   /* Nav */
   .navButtons {
     display: none!important;
   }
 
+  /* Footer */
+
+  .footHeader.contact a {
+    line-height: 2em;
+  }
+
+  /* .footHeader.item {
+    line-height: 1.5em;
+  } */
+  .footerMenu {
+    line-height: 1.5em;
+  }
   /* Index */
   .growingButton{
     width: 100px;
@@ -140,5 +156,15 @@ a {
   .directionButtons > * {
     font-size: 12px!important;
 }
+
+  /* Product Cards*/
+
+  .ui.card:after, .ui.cards:after {
+    content: none!important;
+  }
+
+  .publicProductLabelDiv{
+    line-height: 1em!important;
+  }
 
 }

@@ -32,9 +32,9 @@ function csa() {
       <br />
       <Container textAlign="center">
         <p style={{ fontSize: '1.5em' }}>
-          See What&apos;s Growing
-          <Link passHref href="/publicBasket">
-            <Button color="orange" content="Our CSA" size="large" style={{ marginLeft: '1em' }} />
+          Interested in joining ?
+          <Link passHref href="/contact">
+            <Button color="orange" content="Contact Us" size="large" style={{ marginLeft: '1em' }} />
           </Link>
         </p>
         <br />

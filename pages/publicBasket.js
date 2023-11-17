@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button,
   Card, Container, Divider, Header, Image,
 } from 'semantic-ui-react';
-import Link from 'next/link';
 import { getCurrentBasket } from '../utils/data/mergedData';
 import PublicVegCard from '../components/PublicVegCard';
 import { getAvailableProducts } from '../utils/data/product';
@@ -39,19 +37,12 @@ function PublicBasket() {
         ))}
       </Card.Group>
       <Header as="h2" style={{ fontSize: '1.75em' }} content="Products" />
-      <p style={{ fontSize: '1.25em' }}>Enhance your basket with some of our farm-made products.  Just </p>
+      <p style={{ fontSize: '1.5em' }}>Enhance your basket with some of our farm-made products </p>
       <Card.Group centered style={{ justifyContent: 'space-evenly' }}>
         {products.map((p) => (
           <PublicProductCard obj={p} />
         ))}
       </Card.Group>
-      <Header as="h2" content="Not a Member ?" />
-      <p style={{ fontSize: '1.5em' }}>
-        Contact us to get on the list
-        <Link passHref href="/contact">
-          <Button color="orange" content="Here" size="large" style={{ marginLeft: '1em' }} />
-        </Link>
-      </p>
       <br />
     </Container>
   );

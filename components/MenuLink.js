@@ -5,15 +5,19 @@ import { Menu } from 'semantic-ui-react';
 
 function MenuLink({ href, name, tag }) {
   return (
-    <Link href={href} className={tag} passHref>
-      <Menu.Item>{name}</Menu.Item>
+    <Link href={href} passHref>
+      <Menu.Item className={tag}> {name} </Menu.Item>
     </Link>
   );
 }
 
 MenuLink.propTypes = {
-  tag: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  tag: PropTypes.string,
+};
+
+MenuLink.defaultProps = {
+  tag: null,
 };
 export default MenuLink;
