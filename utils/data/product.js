@@ -8,8 +8,9 @@ import { deleteCloudImage, uploadProductPhoto, uploadVeg } from './ cloudinary';
 const dbUrl = clientCredentials.databaseUrl;
 
 const getProducts = async () => {
-  const response = await axios.get(`${dbUrl}/product.json`);
-  return Object.values(response.data);
+  const products = await axios.get(`${dbUrl}/product.json`);
+  const response = Object.values(products.data);
+  return response;
 };
 
 const getAvailableProducts = async () => {

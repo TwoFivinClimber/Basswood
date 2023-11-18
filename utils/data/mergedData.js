@@ -2,8 +2,9 @@
 /* eslint-disable no-useless-catch */
 // eslint-disable-next-line object-curly-newline
 import { createBasket, deleteBasket, disableBasket, getActiveBasket, getActiveBaskets, getBasket } from './basket';
-import { getSingleVeg } from './veg';
+import { getSingleVeg, getVeggies } from './veg';
 import { createBasketVeg, deleteBasketVeg, getBasketVeg } from './basketVeg';
+import { getProducts } from './product';
 
 const getCurrentBasket = () => new Promise((resolve, reject) => {
   getActiveBasket().then((basket) => {
@@ -64,6 +65,18 @@ const deleteFullBasket = async (bsktId) => {
   }
 };
 
+const getTheGoods = async () => {
+  try {
+    const veggies = await getVeggies();
+    const products = await getProducts();
+    const response = { veggies, products };
+    return response;
+  } catch (error) {
+    console.error('Error', error);
+    return [];
+  }
+};
+
 export {
-  getCurrentBasket, deleteThisBasketVeg, createNewWeekBasket, getBasketById, deleteFullBasket,
+  getCurrentBasket, deleteThisBasketVeg, createNewWeekBasket, getBasketById, deleteFullBasket, getTheGoods,
 };

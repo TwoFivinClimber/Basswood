@@ -15,7 +15,7 @@ const offerings = [
     title: 'Products',
     description: "At our farm, we believe in harnessing the full potential of our bountiful harvests to create a wide array of artisanal products that embody the essence of farm-to-table goodness.  Available through the CSA, check out what we're producing.",
     image: 'https://res.cloudinary.com/dvdsbc2xf/image/upload/v1693624717/basswood/general%20website%20images/products_oj54rm.jpg',
-    link: '/publicBasket',
+    link: '/products',
   },
 ];
 

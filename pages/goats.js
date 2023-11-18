@@ -36,7 +36,7 @@ function goats({ randomFact }) {
       <Header as="h1" content="Goat Chese Anyone ?" />
       <p style={{ fontSize: '1.5em' }}>
         {goatCopy.products}
-        <Link passHref href="/">
+        <Link passHref href="/contact">
           <Button color="orange" content="Here" size="large" style={{ marginLeft: '1em' }} />
         </Link>
       </p>

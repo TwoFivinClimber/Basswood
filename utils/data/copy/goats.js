@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const goatCopy = {
   ourGoats: 'Our goats are great.  Except for when they get out and into the vegetables. Dairy goats are a valuable livestock breed cherished for their exceptional milk production. These goats are carefully bred and selected to yield rich and nutritious milk, making them indispensable for dairy farming. Their milk is not only high in protein and essential vitamins but is also more easily digestible compared to cow\'s milk, making it an excellent alternative for those with lactose intolerance. Dairy goats are known for their gentle temperament and adaptability, thriving in various climates and terrains. They play a vital role in providing an array of dairy products, such as cheese, yogurt, butter, and soap, contributing to the diversity and richness of the dairy industry.',
-  products: 'Check out the products we make with our dairy goat\'s milk!',
+  products: 'Contact us to learn how to get some',
 };
 
 const goatFacts = ['Goats are versatile? Goats are incredibly versatile animals and can adapt to various farming systems. They can thrive in different climates and terrains, making them suitable for a wide range of agricultural settings.',

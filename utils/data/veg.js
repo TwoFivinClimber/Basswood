@@ -8,29 +8,22 @@ import { deleteCloudImage, uploadVeg } from './ cloudinary';
 
 const dbUrl = clientCredentials.databaseUrl;
 
-const getVeggies = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/veg.json`)
-    .then((response) => {
-      if (response.data) {
-        resolve(Object.values(response.data));
-      }
-    })
-    .catch((error) => reject(error));
-});
+const getVeggies = async () => {
+  try {
+    const veggies = await axios.get(`${dbUrl}/veg.json`);
+    const response = Object.values(veggies.data);
+    return response;
+  } catch (error) {
+    console.error('Error:', error);
+    return [];
+  }
+};
 
 const getSingleVeg = (vegId) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/veg/${vegId}.json`)
     .then((response) => resolve(response.data))
     .catch(reject);
 });
-
-// const updateVeg = (input) => new Promise((resolve, reject) => {
-//   getUserToken().then((data) => {
-//     axios.patch(`${dbUrl}/veg/${input.id}.json?auth=${data}`, input)
-//       .then(resolve)
-//       .catch(reject);
-//   });
-// });
 
 const updateVeg = async (input, file) => {
   if (file) {
