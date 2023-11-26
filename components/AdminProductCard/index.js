@@ -9,17 +9,17 @@ function AdminProductCard({ obj, onUpdate }) {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Card onClick={setOpen}>
+      <Card onClick={setOpen} className="publicProductCard">
         <Card.Content style={{ display: 'flex', alignItems: 'center', minHeight: '62%' }}>
           <Image fluid style={{ maxHeight: '300px', objectFit: 'cover' }} src={obj.img} />
         </Card.Content>
         <Card.Content>
           <Card.Header>{obj.name}</Card.Header>
-          <Card.Description className="productCardDescription">
+          <Card.Description className="publicProductCardDescription">
             {obj.description}
           </Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        <Card.Content extra className="publicProductLabelDiv">
           {obj.available ? <Label color="green">Available</Label>
             : <Label color="red">Unavailable</Label>}
         </Card.Content>
